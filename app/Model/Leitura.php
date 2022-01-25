@@ -1,6 +1,6 @@
 <?php
 
-App::uses('Model', 'AppModel');
+App::uses('AppModel', 'Model');
 
 class Leitura extends AppModel {
     

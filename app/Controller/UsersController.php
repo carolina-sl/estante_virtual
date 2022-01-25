@@ -35,7 +35,6 @@ class UsersController extends AppController {
             ]
             ]);
         
-//        debug($usersEnderecos);
         $this->set('usersEnderecos', $usersEnderecos);
         
         if ($this->request->is('post') && !empty($this->request->data)){
