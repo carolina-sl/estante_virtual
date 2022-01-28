@@ -9,6 +9,10 @@ class Livro extends Model {
         'titulo' => 'notBlank',
         'descricao' => 'notBlank',
         'autor' => 'notBlank'
-
+    ];
+    public $hasMany = [
+        'Leitura' => [
+            'className' => 'Leitura'
+        ]
     ];
 }

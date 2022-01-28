@@ -10,5 +10,10 @@ class Leitura extends AppModel {
             'className' => 'User'
         ]
     ];
+//    public $hasMany = [
+//        'Livro' => [
+//            'className' => 'Livro'
+//        ]
+//    ]; 
     
 }

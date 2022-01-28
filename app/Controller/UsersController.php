@@ -20,8 +20,6 @@ class UsersController extends AppController {
         ]);
         $this->set('pessoaCasa', $pessoaCasa);
         
-        
-        
     }
     
     public function add() {
