@@ -2,8 +2,8 @@
 
 App::uses('AppModel', 'Model');
 
-class Endereco extends Model {
-    
+class Endereco extends AppModel {
+
     public $name = 'Endereco';
     public $hasMany = [
         'User' => [
@@ -11,5 +11,5 @@ class Endereco extends Model {
             'foreignKey' => 'endereco_id'
         ]
     ];
-}
 
+}

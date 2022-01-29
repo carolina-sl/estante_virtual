@@ -3,17 +3,12 @@
 App::uses('AppModel', 'Model');
 
 class Leitura extends AppModel {
-    
+
     public $name = 'Leitura';
     public $belongsTo = [
         'User' => [
             'className' => 'User'
         ]
     ];
-//    public $hasMany = [
-//        'Livro' => [
-//            'className' => 'Livro'
-//        ]
-//    ]; 
-    
+
 }

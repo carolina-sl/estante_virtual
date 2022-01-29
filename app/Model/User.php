@@ -2,8 +2,8 @@
 
 App::uses('AppModel', 'Model');
 
-class User extends Model {
-    
+class User extends AppModel {
+
     public $name = 'User';
     public $validate = [
         'nome' => 'notBlank',
@@ -18,9 +18,7 @@ class User extends Model {
     public $hasOne = [
         'Leitura' => [
             'className' => 'Leitura'
-            
         ]
     ];
+
 }
-
-
