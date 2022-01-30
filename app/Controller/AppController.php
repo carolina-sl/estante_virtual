@@ -31,8 +31,23 @@ App::uses('Controller', 'Controller');
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    
+
     public $components = array(
-    'DebugKit.Toolbar'
-);
+        'DebugKit.Toolbar',
+        'Session',
+        'Flash',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+            'authError' => 'Você deve fazer login para ter acesso a essa área!',
+            'authenticate' => array(
+                'Form'
+            )
+        )
+    );
+    
+    function beforeFilter() {
+        $this->Auth->allow('login', 'index');
+    }
+
 }

@@ -1,6 +1,9 @@
 <?php
 
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+App::uses('AuthComponent', 'Controller/Component');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class User extends AppModel {
 
@@ -20,5 +23,12 @@ class User extends AppModel {
             'className' => 'Leitura'
         ]
     ];
+    
+    public function beforeSave($options = Array()) {
+        if (isset($this->data[$this->alias]['password'])) {
+            $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+        }
+        return true;
+    }
 
 }
