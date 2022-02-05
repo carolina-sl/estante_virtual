@@ -1,4 +1,2 @@
 <?php
 
-debug($dado);
-

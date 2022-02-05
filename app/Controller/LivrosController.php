@@ -15,7 +15,7 @@ class LivrosController extends AppController {
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->Livro->create();
             if ($this->Livro->save($this->request->data)) {
-                $this->Flash->success(__('Usuário cadastrado com sucesso'));
+                $this->Flash->success(__('Livro cadastrado com sucesso'));
                 return $this->redirect(['action' => 'index']);
             }
         }

@@ -3,15 +3,20 @@
 $colunas = ['ID', 'NOME','LOCALIDADE', 'UF'];
  $users = [];
  foreach ($dados as $dado) {
-     $users [] = [
+     $users[] = [
          $dado['User']['id'],
-         $dado['User']['nome'],
+         $this->Html->link($dado['User']['nome'], $dado['User']['nome']),
          $dado['Endereco']['cidade'],
          $dado['Endereco']['uf'],
      ];
  }
+ 
+ 
  $body = $this->Html->tableCells($users);
- $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), array('class' => 'thead-light'));
- echo $this->Form->input('nome', ['label' => 'Nome', 'required' => false]);
- echo '<br />';
+ $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
+ 
+ echo $this->Form->create('User');
+ echo $this->Form->input('nome', ['required' => false]);
+ echo $this->Form->end('Pesquisar');
+ 
  echo $this->Html->tag('table', $header . $body);

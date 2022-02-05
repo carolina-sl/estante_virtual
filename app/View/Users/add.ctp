@@ -9,5 +9,5 @@ echo $this->Form->input('endereco_id', ['options' => $usersEnderecos]);
 echo $this->Form->input('role');
 echo $this->Form->input('leitura_id', ['options' => $usersLeituras]);
 
-echo $this->Form->submit('Cadastrar');
+echo $this->Form->end('Cadastrar');
 echo $this->Form->end();
