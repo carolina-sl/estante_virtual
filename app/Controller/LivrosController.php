@@ -6,7 +6,7 @@ class LivrosController extends AppController {
 
     public function index() {
         $dados = $this->Livro->find('all');
-
+        
         $this->set('dados', $dados);
     }
 

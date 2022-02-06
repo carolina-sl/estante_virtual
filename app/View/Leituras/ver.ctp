@@ -1,16 +1,14 @@
 <?php
-
-echo $this->Html->tag('h1', 'Detalhes do Usuário');
     
-    $colunas = array('id', 'Nome', 'E-mail', 'Data de cadastro');
+    $colunas = array('id', 'Nome', 'Livro', 'Situação');
     $header = $this->Html->tableHeaders($colunas);
     
     $detalhar = array();
         $detalhar[] = array(
-            $dado['User']['id'],
+            $dado['Leitura']['id'],
             $dado['User']['nome'],
-            $dado['User']['username'],
-            date("d/m/Y H:i:s", strtotime($dado['User']['created'])),
+            $dado['Livro']['titulo'],
+            $dado['SituacaoLeitura']['status']
         );
 
     $body = $this->Html->tableCells($detalhar);
@@ -19,3 +17,4 @@ echo $this->Html->tag('h1', 'Detalhes do Usuário');
     
     echo $this->Html->css('forms');
     
+//    debug($dado);

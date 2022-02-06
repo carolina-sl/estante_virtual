@@ -36,18 +36,18 @@ class AppController extends Controller {
         'DebugKit.Toolbar',
         'Session',
         'Flash',
-        'Auth' => array(
-            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
-            'authError' => 'Você deve fazer login para ter acesso a essa área!',
-            'authenticate' => array(
-                'Form'
-            )
-        )
+//        'Auth' => array(
+//            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+//            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
+//            'authError' => 'Você deve fazer login para ter acesso a essa área!',
+//            'authenticate' => array(
+//                'Form'
+//            )
+//        )
     );
     
-    function beforeFilter() {
-        $this->Auth->allow('login', 'index');
-    }
+//    function beforeFilter() {
+//        $this->Auth->allow('login', 'index');
+//    }
 
 }

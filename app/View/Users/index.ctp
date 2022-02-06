@@ -5,7 +5,7 @@ $colunas = ['ID', 'NOME','LOCALIDADE', 'UF'];
  foreach ($dados as $dado) {
      $users[] = [
          $dado['User']['id'],
-         $this->Html->link($dado['User']['nome'], $dado['User']['nome']),
+         $this->Html->link($dado['User']['nome'],  array('controller' => 'leituras', 'action' => 'ver', $dado['User']['id'])),
          $dado['Endereco']['cidade'],
          $dado['Endereco']['uf'],
      ];
