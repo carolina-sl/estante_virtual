@@ -75,6 +75,9 @@ class UsersController extends AppController {
         $this->loadModel('Leitura');
 
         $userLeitura = $this->User->Leitura->find('first', [
+            'fields' => [
+                ''
+            ],
             'conditions' => [
                 'leitura.user_id' => $id
             ]
