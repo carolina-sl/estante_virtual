@@ -13,7 +13,7 @@ class UsersController extends AppController {
         $dados = $this->User->find('all', [
             'group' => 'User.id'
         ]);
-        
+
         $this->set('dados', $dados);
     }
 
@@ -70,8 +70,15 @@ class UsersController extends AppController {
         }
     }
 
-    public function ver($id = null) {
+    public function view($id = null) {
         $dado = $this->User->findById($id);
+        $this->loadModel('Leitura');
+
+        $userLeitura = $this->User->Leitura->find('first', [
+            'conditions' => [
+                'leitura.user_id' => $id
+            ]
+        ]);
         $this->set(compact('dado'));
     }
 
