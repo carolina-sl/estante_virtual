@@ -74,6 +74,7 @@ class UsersController extends AppController {
         $dado = $this->User->findById($id);
         $this->loadModel('Leitura');
 
+
 //        $userLeitura = $this->User->Leitura->find('first', [
 //            'conditions' => [
 //                'leitura.user_id' => $id
@@ -88,23 +89,26 @@ class UsersController extends AppController {
                 'User.id' => $id
             ]
         ]);
+        
+//        $userLeitura = $this->User->Leitura->find('first', [
+//            'fields' => [
+//                ''
+//            ],
+//            'conditions' => [
+//                'Leitura.user_id' => $id,
+//                'Leitura.situacao_leitura_id' => 5
+//            ]
+//        ]);
+        
         $qtdUserLeitura = $this->User->Leitura->find('count', [
             'conditions' => [
                 'Leitura.user_id' => $id,
-                'Leitura.situacao_leitura_id' => 5
+                'Leitura.situacao_leitura_id' => 4
             ]
         ]);
         debug($qtdUserLeitura);
         debug($userLeitura);
-        
-//        $userLeitura = $this->User->Leitura->find('first', [
-//            'fields' => [
-//              ''  
-//            ],
-//            'conditions' => [
-//                'leitura.user_id' => $id
-//            ]
-//        ]);
+
         $this->set(compact('dado'));
     }
 
