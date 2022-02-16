@@ -2,7 +2,7 @@
 
 echo $this->Html->tag('h1', 'Detalhes do Usuário');
     
-    $colunas = array('id', 'Nome', 'Localidade', 'UF', 'Lidos', 'lendo', 'Quero ler');
+    $colunas = array('id', 'Nome', 'Localidade', 'UF', 'Lidos', 'Lendo', 'Quero ler');
     $header = $this->Html->tableHeaders($colunas);
     
     $detalhar = array();

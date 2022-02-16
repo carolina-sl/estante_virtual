@@ -13,7 +13,7 @@ class UsersController extends AppController {
         $dados = $this->User->find('all', [
             'group' => 'User.id'
         ]);
-
+        debug($dados);
         $this->set('dados', $dados);
     }
 
@@ -74,11 +74,37 @@ class UsersController extends AppController {
         $dado = $this->User->findById($id);
         $this->loadModel('Leitura');
 
-        $userLeitura = $this->User->Leitura->find('first', [
+//        $userLeitura = $this->User->Leitura->find('first', [
+//            'conditions' => [
+//                'leitura.user_id' => $id
+//            ],
+//            'contain' => [
+//                'Livro' 
+//            ]
+//        ]);
+        
+        $userLeitura = $this->User->find('first', [
             'conditions' => [
-                'leitura.user_id' => $id
+                'User.id' => $id
             ]
         ]);
+        $qtdUserLeitura = $this->User->Leitura->find('count', [
+            'conditions' => [
+                'Leitura.user_id' => $id,
+                'Leitura.situacao_leitura_id' => 5
+            ]
+        ]);
+        debug($qtdUserLeitura);
+        debug($userLeitura);
+        
+//        $userLeitura = $this->User->Leitura->find('first', [
+//            'fields' => [
+//              ''  
+//            ],
+//            'conditions' => [
+//                'leitura.user_id' => $id
+//            ]
+//        ]);
         $this->set(compact('dado'));
     }
 
