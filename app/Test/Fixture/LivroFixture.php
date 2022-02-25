@@ -21,14 +21,23 @@ class LivroFixture extends CakeTestFixture {
             [
                 'id' => 1,
                 'titulo' => 'Aventura',
+                'descricao' => 'descricao',
                 'autor' => 'Aventura',
                 'qtd_pagina' => '10'
             ],
             [
                 'id' => 2,
                 'titulo' => 'Aventura2',
+                'descricao' => 'descricao',
                 'autor' => 'Aventura2',
                 'qtd_pagina' => '20'
+            ],
+            [
+                'id' => 3,
+                'titulo' => 'Aventura3',
+                'descricao' => 'descricao',
+                'autor' => 'Aventura3',
+                'qtd_pagina' => '30'
             ]
         ];
         parent::init();
