@@ -4,21 +4,20 @@ App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
 
-    public function beforeFilter() {
-        parent::beforeFilter();
-        $this->Auth->allow('logout', 'add');
-    }
+//    public function beforeFilter() {
+//        parent::beforeFilter();
+//        $this->Auth->allow('logout', 'add');
+//    }
 
     public function index() {
         $dados = $this->User->find('all', [
             'group' => 'User.id'
         ]);
-
+        debug($dados);
         $this->set('dados', $dados);
     }
 
     public function add() {
-        debug($this->request->data);
         $this->loadModel('Endereco');
         $this->loadModel('Leitura');
 
@@ -71,8 +70,45 @@ class UsersController extends AppController {
         }
     }
 
-    public function ver($id = null) {
+    public function view($id = null) {
         $dado = $this->User->findById($id);
+        $this->loadModel('Leitura');
+
+
+//        $userLeitura = $this->User->Leitura->find('first', [
+//            'conditions' => [
+//                'leitura.user_id' => $id
+//            ],
+//            'contain' => [
+//                'Livro' 
+//            ]
+//        ]);
+        
+        $userLeitura = $this->User->find('first', [
+            'conditions' => [
+                'User.id' => $id
+            ]
+        ]);
+        
+//        $userLeitura = $this->User->Leitura->find('first', [
+//            'fields' => [
+//                ''
+//            ],
+//            'conditions' => [
+//                'Leitura.user_id' => $id,
+//                'Leitura.situacao_leitura_id' => 5
+//            ]
+//        ]);
+        
+        $qtdUserLeitura = $this->User->Leitura->find('count', [
+            'conditions' => [
+                'Leitura.user_id' => $id,
+                'Leitura.situacao_leitura_id' => 4
+            ]
+        ]);
+        debug($qtdUserLeitura);
+        debug($userLeitura);
+
         $this->set(compact('dado'));
     }
 

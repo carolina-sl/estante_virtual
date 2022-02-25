@@ -18,7 +18,7 @@ class User extends AppModel {
             'className' => 'Endereco'
         ]
     ];
-    public $hasOne = [
+    public $hasMany = [
         'Leitura' => [
             'className' => 'Leitura'
         ]
