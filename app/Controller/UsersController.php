@@ -106,8 +106,8 @@ class UsersController extends AppController {
                 'Leitura.situacao_leitura_id' => 4
             ]
         ]);
-        debug($qtdUserLeitura);
-        debug($userLeitura);
+//        debug($qtdUserLeitura);
+//        debug($userLeitura);
 
         $this->set(compact('dado'));
     }
