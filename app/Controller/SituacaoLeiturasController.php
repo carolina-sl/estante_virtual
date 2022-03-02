@@ -2,18 +2,11 @@
 
 App::uses('AppController', 'Controller');
 
-class SituacaoLivrosController extends AppController {
+class SituacaoLeiturasController extends AppController {
 
     public function index() {
-        $dados = $this->SituacaoLivro->find('all');
+        $dados = $this->SituacaoLeitura->find('all');
         $this->set('dados', $dados);
-
-//        $dados = $this->SituacaoLivro->find('first',[
-//            'conditions' => [
-//                'uf' => 'RS'
-//            ]
-//        ]);
-//        $this->set('dados', $dados);
     }
 
 }
