@@ -83,7 +83,7 @@ class UsersController extends AppController {
         ]);
 
         $teste = $this->User->situacaoLeiturasUsers($dado);
-        debug($detalheUser);
+        //debug($detalheUser);
         $this->set(compact('dado'));
     }
 
