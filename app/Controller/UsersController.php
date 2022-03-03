@@ -76,10 +76,7 @@ class UsersController extends AppController {
         $detalheUser = $this->User->Leitura->find('first', [
             'conditions' => [
                 'User.id' => $id
-            ],
-            'contain' => [
-                'Livro' => ['Livro.id' => 'Leitura.livro_id']
-            ]
+            ]           
         ]);
 
         $teste = $this->User->situacaoLeiturasUsers($dado);

@@ -12,10 +12,11 @@ class Leitura extends AppModel {
         'Livro' => [
             'className' => 'Livro'
         ],
-    ];
-    public $hasOne = [
         'SituacaoLeitura' => [
             'className' => 'SituacaoLeitura'
         ]
     ];
+    /*public $hasOne = [
+        
+    ];*/
 }
