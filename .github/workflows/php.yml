@@ -45,11 +45,11 @@ jobs:
       
     - name: Composer install
       run: | 
-          composer install
-          composer update 
+          composer install --ignore-platform-req=ext-mcrypt
+          composer update --ignore-platform-req=ext-mcrypt
           cd app
-          composer install
-          composer update
+          composer install --ignore-platform-req=ext-mcrypt
+          composer update --ignore-platform-req=ext-mcrypt
     
        
     - name: Run PHPUnit
