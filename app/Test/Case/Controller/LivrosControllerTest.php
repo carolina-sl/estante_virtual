@@ -35,7 +35,6 @@ class LivrosControllerTest extends ControllerTestCase {
                 '/livros/add',
                 array('data' => $data, 'method' => 'post')
         );
-        debug($this->vars);
 
     }
 
