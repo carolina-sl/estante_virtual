@@ -12,7 +12,7 @@ class LeiturasController extends AppController {
 
     public function view($id = null) {
         $dado = $this->Leitura->findById($id);
-
+        
         $this->set('dado', $dado);
     }
 

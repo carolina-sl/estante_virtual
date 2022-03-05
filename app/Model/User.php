@@ -30,5 +30,17 @@ class User extends AppModel {
         }
         return true;
     }
+    
+    public function situacaoLeiturasUsers($dados = []) {
+        $leitura = Hash::get($dados, 'Leitura');
+        $dados = [];
+        foreach ($leitura as $value) {
+            if (!empty($value['situacao_leitura_id'])){
+                $dados[] = $value['situacao_leitura_id'];
+            }
+        }
+
+        return $dados;
+    }
 
 }
