@@ -73,15 +73,23 @@ class UsersController extends AppController {
         $dado = $this->User->findById($id);
         $this->loadModel('Leitura');
 
-        $detalheUser = $this->User->Leitura->find('first', [
+        $detalheUser = $this->User->find('first', [
             'conditions' => [
                 'User.id' => $id
-            ]           
+            ],
+            'contain' => [
+                'Leitura' => [
+                    'Livro',
+                    'SituacaoLeitura'
+                ]
+                
+            ]
         ]);
-
-        $teste = $this->User->situacaoLeiturasUsers($dado);
-        debug($detalheUser);
-        $this->set(compact('dado'));
+        
+        $UserLeituras = $dado['Leitura'];
+        //debug($detalheUser);
+        debug($UserLeituras);
+        $this->set(compact('dado', 'UserLeituras'));
     }
 
     public function login() {
