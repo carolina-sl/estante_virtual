@@ -16,7 +16,6 @@ class Leitura extends AppModel {
             'className' => 'SituacaoLeitura'
         ]
     ];
-    /*public $hasOne = [
-        
-    ];*/
+   
+
 }

@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
 class SituacaoLeitura extends AppModel {
     
     public $name = 'SituacaoLeitura';
-    public $hasOne = [
+    public $hasMany = [
         'Leitura' => [
             'className' => 'Leitura'
         ]

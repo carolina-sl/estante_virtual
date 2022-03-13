@@ -6,9 +6,7 @@ class Livro extends AppModel {
 
     public $name = 'Livro';
     public $validate = [
-        'titulo' => 'notBlank',
-        'descricao' => 'notBlank',
-        'autor' => 'notBlank'
+        
     ];
     public $hasMany = [
         'Leitura' => [

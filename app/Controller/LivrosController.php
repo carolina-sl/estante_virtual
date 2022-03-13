@@ -5,8 +5,12 @@ App::uses('AppController', 'Controller');
 class LivrosController extends AppController {
 
     public function index() {
-        $dados = $this->Livro->find('all');
         
+         $this->loadModel('Leitura');
+         
+        $dados = $this->Livro->find('first');
+        
+        debug($dados);
         $this->set('dados', $dados);
     }
 
@@ -19,6 +23,21 @@ class LivrosController extends AppController {
                 return $this->redirect(['action' => 'index']);
             }
         }
+    }
+    
+    public function view($id = null) {
+        $dado = $this->Livro->findById($id);
+        
+        $this->loadModel('Leitura');
+        $this->loadModel('Livro');
+        $this->loadModel('SituacaoLeitura');
+
+        $detalheLeitura = $this->Livro->find('all', [
+           
+        ]);
+
+        debug($detalheLeitura);
+        $this->set(compact('dado'));
     }
 
 }
