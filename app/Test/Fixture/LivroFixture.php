@@ -1,19 +1,14 @@
 <?php
 
-/**
- * Livro Fixture
- */
 class LivroFixture extends CakeTestFixture {
 
-    /**
-     * Import
-     *
-     * @var array
-     */
     public $name = 'Livro';
-    public $import = [
-        'model' => 'Livro',
-        'records' => false
+    public $fields = [
+        'id' => ['type' => 'integer', 'key' => 'primary'],
+        'titulo' => ['type' => 'string', 'length' => 255],
+        'descricao' => ['type' => 'string', 'length' => 255],
+        'autor' => ['type' => 'string', 'length' => 255],
+        'qtd_pagina ' => ['type' => 'integer'],
     ];
 
     public function init() {
