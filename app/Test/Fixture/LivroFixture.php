@@ -8,7 +8,7 @@ class LivroFixture extends CakeTestFixture {
         'titulo' => ['type' => 'string', 'length' => 255],
         'descricao' => ['type' => 'string', 'length' => 255],
         'autor' => ['type' => 'string', 'length' => 255],
-        'qtd_pagina ' => ['type' => 'integer'],
+        'qtd_pagina' => ['type' => 'integer'],
     ];
 
     public function init() {
