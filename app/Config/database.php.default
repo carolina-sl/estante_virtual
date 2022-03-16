@@ -7,8 +7,8 @@ class DATABASE_CONFIG {
         'persistent' => false,
         'host' => 'localhost',
         'login' => 'root',
-        'password' => 'secret',
-        'database' => 'estante_virtual',
+        'password' => 'root',
+        'database' => 'cakephp',
         'prefix' => '',
         //'encoding' => 'utf8',
     );
@@ -17,8 +17,8 @@ class DATABASE_CONFIG {
         'persistent' => false,
         'host' => 'localhost',
         'login' => 'root',
-        'password' => 'secret',
-        'database' => 'test',
+        'password' => 'root',
+        'database' => 'cakephp',
         'prefix' => '',
         //'encoding' => 'utf8',
     );
