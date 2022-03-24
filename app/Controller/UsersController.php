@@ -10,9 +10,22 @@ class UsersController extends AppController {
 //    }
 
     public function index() {
+        
         $dados = $this->User->find('all', [
+            'conditions' => [],
             'group' => 'User.id'
         ]);
+
+        if (!empty($this->request->data && $this->request->is('post', 'put'))) {
+            
+            $dados = $this->User->find('all', [
+                'conditions' => [
+                    'User.nome' => $this->request->data['User']['nome']
+                ],
+                'group' => 'User.id'
+            ]);
+        }
+
         $this->set('dados', $dados);
     }
 
@@ -76,18 +89,27 @@ class UsersController extends AppController {
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
 
-        $detalheLeitura = $this->User->find('all', [
+        
+        $lidos = $this->User->Leitura->find('count', [
             'conditions' => [
-                'User.id' => $id
+                'User.id' => $id,
+                'Leitura.situacao_leitura_id' => 2
             ]
-            
+        ]);
+        $lendo = $this->User->Leitura->find('count', [
+            'conditions' => [
+                'User.id' => $id,
+                'Leitura.situacao_leitura_id' => 3
+            ]
+        ]);
+        $quero_ler = $this->User->Leitura->find('count', [
+            'conditions' => [
+                'User.id' => $id,
+                'Leitura.situacao_leitura_id' => 4
+            ]
         ]);
         
-        //debug($detalheUser);
-
-        //debug($detalheUser);
-        debug($detalheLeitura);
-        $this->set(compact('dado'));
+        $this->set(compact('dado', 'lidos', 'lendo', 'quero_ler'));
     }
 
     public function login() {

@@ -1,8 +1,13 @@
 <?php
 
+
+$filtro =  $this->Form->create('User');
+$filtro .=  $this->Form->input('User.nome', ['required' => false]);
+$filtro .=  $this->Form->end('Pesquisar');
+
 $colunas = ['ID', 'NOME','LOCALIDADE', 'UF'];
- $users = [];
- foreach ($dados as $dado) {
+$users = [];
+foreach ($dados as $dado) {
      $users[] = [
          $dado['User']['id'],
          $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
@@ -12,11 +17,8 @@ $colunas = ['ID', 'NOME','LOCALIDADE', 'UF'];
  }
  
  
- $body = $this->Html->tableCells($users);
- $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
+$body = $this->Html->tableCells($users);
+$header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
  
- echo $this->Form->create('User');
- echo $this->Form->input('nome', ['required' => false]);
- echo $this->Form->end('Pesquisar');
- 
- echo $this->Html->tag('table', $header . $body);
+echo $filtro;
+echo $this->Html->tag('table', $header . $body);
