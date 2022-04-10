@@ -10,7 +10,6 @@ class UsersController extends AppController {
 //    }
 
     public function index() {
-        
         $dados = $this->User->find('all', [
             'conditions' => [],
             'group' => 'User.id'
@@ -122,7 +121,7 @@ class UsersController extends AppController {
             );
         }
     }
-
+    
     public function logout() {
         $this->redirect($this->Auth->logout());
     }

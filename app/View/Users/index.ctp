@@ -1,6 +1,5 @@
 <?php
 
-
 $filtro =  $this->Form->create('User');
 $filtro .=  $this->Form->input('User.nome', ['required' => false]);
 $filtro .=  $this->Form->end('Pesquisar');

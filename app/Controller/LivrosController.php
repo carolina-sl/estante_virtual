@@ -5,12 +5,9 @@ App::uses('AppController', 'Controller');
 class LivrosController extends AppController {
 
     public function index() {
+        $this->loadModel('Leitura');
+        $dados = $this->Livro->find('all');
         
-         $this->loadModel('Leitura');
-         
-        $dados = $this->Livro->find('first');
-        
-        debug($dados);
         $this->set('dados', $dados);
     }
 

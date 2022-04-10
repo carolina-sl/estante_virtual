@@ -13,14 +13,12 @@ class LeiturasController extends AppController {
         $dados = $this->Leitura->find('first');
 
         $this->set('dados', $dados);
-        debug($dados);
     }
 
     public function view($id = null) {
         $dado = $this->Leitura->findById($id);
         
         $this->set('dado', $dado);
-        
     }
 
 }
