@@ -26,6 +26,15 @@ class RelatoriosController extends AppController {
 
     }
     
+	
+	public function paginometro() {
+	
+		$dados = $this->User->find('all', [
+			'contain' => [
+				'Leitura'
+			]
+		]);
+	}
     
 
 }
