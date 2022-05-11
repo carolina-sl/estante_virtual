@@ -4,7 +4,7 @@ $filtro =  $this->Form->create('User');
 $filtro .=  $this->Form->input('User.nome', ['required' => false]);
 $filtro .=  $this->Form->end('Pesquisar');
 
-$colunas = ['ID', 'NOME','LOCALIDADE', 'UF'];
+$colunas = ['ID', 'NOME','USERNAME', 'UF'];
 $users = [];
 foreach ($dados as $dado) {
      $users[] = [

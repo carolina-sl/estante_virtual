@@ -5,7 +5,7 @@ $livros = [];
 foreach ($dados as $dado) {
      $livros[] = [
          $dado['Livro']['id'],
-         $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['id'])),
+         $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['titulo'])),
          $dado['Livro']['descricao'],
          $dado['Livro']['autor'],
          $dado['Livro']['qtd_pagina']

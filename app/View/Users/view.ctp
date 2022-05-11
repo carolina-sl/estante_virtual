@@ -1,8 +1,8 @@
 <?php
 
 echo $this->Html->tag('h1', 'Detalhes do Usuário');
-    
-    $colunas = array('id', 'Nome', 'Localidade', 'UF', 'Lidos', 'Lendo', 'Quero ler');
+   
+    $colunas = array('id', 'Nome', 'Localidade', 'UF', 'Lidos', 'Lendo', 'Quero ler', 'Paginômetro');
     $header = $this->Html->tableHeaders($colunas);
     $leitura = Hash::get($dado, 'Leitura');
 
@@ -14,7 +14,8 @@ echo $this->Html->tag('h1', 'Detalhes do Usuário');
                 $dado['Endereco']['uf'],
                 $lidos,
                 $lendo,
-                $quero_ler
+                $quero_ler,
+                $paginometro ? $paginometro : 0
             );
     
     $body = $this->Html->tableCells($detalhar);

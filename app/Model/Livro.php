@@ -15,5 +15,5 @@ class Livro extends AppModel {
             'className' => 'Leitura'
         ]
     ];
-
+    
 }

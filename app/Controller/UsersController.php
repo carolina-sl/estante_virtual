@@ -95,12 +95,14 @@ class UsersController extends AppController {
                 'Leitura.situacao_leitura_id' => 2
             ]
         ]);
+        
         $lendo = $this->User->Leitura->find('count', [
             'conditions' => [
                 'User.id' => $id,
                 'Leitura.situacao_leitura_id' => 3
             ]
         ]);
+        
         $quero_ler = $this->User->Leitura->find('count', [
             'conditions' => [
                 'User.id' => $id,
@@ -108,7 +110,10 @@ class UsersController extends AppController {
             ]
         ]);
         
-        $this->set(compact('dado', 'lidos', 'lendo', 'quero_ler'));
+        $paginometro = $this->User->userPaginometro($id);
+        
+        $this->set(compact('dado', 'lidos', 'lendo', 'quero_ler', 'paginometro'));
+        
     }
 
     public function login() {

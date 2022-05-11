@@ -9,9 +9,25 @@ class LeiturasController extends AppController {
         $this->loadModel('User');
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
+        $this->loadModel('Leitura');
         
-        $dados = $this->Leitura->find('first');
-
+        $dados = $this->Leitura->find('all', [
+            'fields' => [
+                'Leitura.id',
+                'User.id',
+                'User.nome',
+                'Livro.id',
+                'Livro.titulo',
+                'SituacaoLeitura.status'
+                
+            ],
+            'join' => [
+                'SituacaoLeitura' => [
+                    'Leitura.situacaoo_leitura_id' => 'SituacaoLeitura.id' 
+                ]
+            ]
+        ]);
+        debug($dados);
         $this->set('dados', $dados);
     }
 

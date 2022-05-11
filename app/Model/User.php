@@ -13,7 +13,7 @@ class User extends AppModel {
     public $validate = [
         'nome' => 'notBlank',
         'username' => 'notBlank',
-        'password' => 'notBlank'
+        'password' => 'validacao_senha'
     ];
     public $belongsTo = [
         'Endereco' => [
@@ -23,18 +23,16 @@ class User extends AppModel {
     public $hasMany = [
         'Leitura' => [
             'className' => 'Leitura'
-        ]
+        ],
+        /*'Endereco' => [
+            'className' => 'Endereco'
+        ]*/
+        
     ];
     public $virtualFields = array(
-        'total_uf' => 'SUM(CASE
-		WHEN endereco_id is null THEN 0
-        ELSE 1
-    END)',
+        'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
         'total_users' => 'COUNT(User.id)',
-        'maior_idade' => 'SUM(CASE 
-		WHEN TIMESTAMPDIFF(year, dt_nascimento, now()) >= 18 THEN 1
-        ELSE 0
-    END) '
+        'maior_idade' => 'SUM(CASE WHEN TIMESTAMPDIFF(year, dt_nascimento, now()) >= 18 THEN 1 ELSE 0 END)'
     );
 
     public function beforeSave($options = Array()) {
@@ -55,5 +53,30 @@ class User extends AppModel {
 
         return $dados;
     }
-  
+    
+    public function validacaoSenha() {
+        return 'lalala';
+        
+    }
+    
+    public function userPaginometro($id) {
+        
+        $dados = $this->Leitura->find('all', [
+            'fields' => [
+                'Livro.qtd_pagina'
+            ],
+            'conditions' => [
+                'User.id' => $id
+            ]
+        ]);
+        
+        $userpPaginometro = [];
+        foreach ($dados as $dado){
+            
+            $userpPaginometro[] = Hash::get($dado, 'Livro.qtd_pagina');
+            $totalUserpPaginometro = array_sum($userpPaginometro);
+        }
+        return $totalUserpPaginometro;
+
+    }
 }

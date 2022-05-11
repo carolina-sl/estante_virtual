@@ -12,20 +12,67 @@ class RelatoriosController extends AppController {
         $this->loadModel('Endereco');
 
         // virtualFields
-        $dados = $this->User->find('first', [
+        $dados = $this->User->find('all', [
             'conditions' => [
             ],
             'fields' => [
                 'total_uf',
                 'total_users',
-                'maior_idade'
+                'maior_idade',
             ]
         ]);
-        debug($dados);
+        
         $this->set('dados', $dados);
+        $this->set('relatorioDadosLeituras', $relatorioDadosLeituras);
 
     }
     
+    public function relatorio_leituras() {
+        
+        $this->loadModel('Leitura');
+        $this->loadModel('SituacaoLeitura');
+        $this->loadModel('Livro');
+        $this->loadModel('Endereco');
+        $this->loadModel('User');
+        
+        
+        $consultaFindAll = $this->Leitura->find('first', [
+            'fields' => [
+                'Leitura.id',
+                'User.id',
+                'User.nome',
+                'User.dt_nascimento',
+                'User.endereco_id',
+                'Livro.id',
+                'SituacaoLeitura.id',
+                'SituacaoLeitura.status',
+                'Livro.titulo'
+                
+            ],
+            'conditions' => [
+            ],
+            'contain' => [
+                'Endereco'
+            ]
+            
+            //'group' => 'User.id'
+        ]);
+        
+    $virtualFieldsTotalsLeituras = $this->Leitura->find('all', [
+        'fields' => [
+            'total_leituras',
+            'total_situacao_leitura_lido',
+            'total_situacao_leitura_lendo',
+            'total_situacao_leitura_quero_ler'
+        ]
+    ]);
     
+    $this->set('virtualFieldsTotalsLeituras', $virtualFieldsTotalsLeituras);
+
+//    $this->set('dados', $dados);
+
+      debug($virtualFieldsTotalsLeituras);
+        
+    }
 
 }

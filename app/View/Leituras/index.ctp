@@ -11,7 +11,7 @@ $colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA'];
          $dado['SituacaoLeitura']['status']
      ];
  }
- 
+
 
  $body = $this->Html->tableCells($leituras);
 
