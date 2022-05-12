@@ -12,7 +12,7 @@ class RelatoriosController extends AppController {
         $this->loadModel('Endereco');
 
         // virtualFields
-        $dados = $this->User->find('all', [
+        $dados = $this->User->find('first', [
             'conditions' => [
             ],
             'fields' => [
