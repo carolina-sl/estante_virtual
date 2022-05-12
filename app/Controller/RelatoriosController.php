@@ -3,7 +3,7 @@
 App::uses('AppController', 'Controller');
 
 class RelatoriosController extends AppController {
-    
+
     public function relatorio_users() {
 
         $this->loadModel('Livro');
@@ -21,21 +21,20 @@ class RelatoriosController extends AppController {
                 'maior_idade',
             ]
         ]);
-        
-        $this->set('dados', $dados);
-        $this->set('relatorioDadosLeituras', $relatorioDadosLeituras);
 
-    }
-    
-    public function relatorio_leituras() {
+        $this->set('dados', $dados);
         
+    }
+
+    public function relatorio_leituras() {
+
         $this->loadModel('Leitura');
         $this->loadModel('SituacaoLeitura');
         $this->loadModel('Livro');
         $this->loadModel('Endereco');
         $this->loadModel('User');
-        
-        
+
+
         $consultaFindAll = $this->Leitura->find('first', [
             'fields' => [
                 'Leitura.id',
@@ -47,32 +46,27 @@ class RelatoriosController extends AppController {
                 'SituacaoLeitura.id',
                 'SituacaoLeitura.status',
                 'Livro.titulo'
-                
             ],
             'conditions' => [
             ],
             'contain' => [
                 'Endereco'
             ]
-            
-            //'group' => 'User.id'
+
+                //'group' => 'User.id'
         ]);
-        
-    $virtualFieldsTotalsLeituras = $this->Leitura->find('all', [
-        'fields' => [
-            'total_leituras',
-            'total_situacao_leitura_lido',
-            'total_situacao_leitura_lendo',
-            'total_situacao_leitura_quero_ler'
-        ]
-    ]);
-    
-    $this->set('virtualFieldsTotalsLeituras', $virtualFieldsTotalsLeituras);
 
-//    $this->set('dados', $dados);
+        $virtualFieldsTotalsLeituras = $this->Leitura->find('all', [
+            'fields' => [
+                'total_leituras',
+                'total_situacao_leitura_lido',
+                'total_situacao_leitura_lendo',
+                'total_situacao_leitura_quero_ler'
+            ]
+        ]);
 
-      debug($virtualFieldsTotalsLeituras);
-        
+        $this->set('virtualFieldsTotalsLeituras', $virtualFieldsTotalsLeituras);
+
     }
 
 }

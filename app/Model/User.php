@@ -24,10 +24,9 @@ class User extends AppModel {
         'Leitura' => [
             'className' => 'Leitura'
         ],
-        /*'Endereco' => [
-            'className' => 'Endereco'
-        ]*/
-        
+            /* 'Endereco' => [
+              'className' => 'Endereco'
+              ] */
     ];
     public $virtualFields = array(
         'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
@@ -41,26 +40,25 @@ class User extends AppModel {
         }
         return true;
     }
-    
+
     public function situacaoLeiturasUsers($dados = []) {
         $leitura = Hash::get($dados, 'Leitura');
         $dados = [];
         foreach ($leitura as $value) {
-            if (!empty($value['situacao_leitura_id'])){
+            if (!empty($value['situacao_leitura_id'])) {
                 $dados[] = $value['situacao_leitura_id'];
             }
         }
 
         return $dados;
     }
-    
+
     public function validacaoSenha() {
         return 'lalala';
-        
     }
-    
+
     public function userPaginometro($id) {
-        
+
         $dados = $this->Leitura->find('all', [
             'fields' => [
                 'Livro.qtd_pagina'
@@ -69,14 +67,18 @@ class User extends AppModel {
                 'User.id' => $id
             ]
         ]);
-        
+
         $userpPaginometro = [];
-        foreach ($dados as $dado){
+        
+        foreach ($dados as $dado) {
+        debug(Hash::get($dado, 'Livro.qtd_pagina'));
             
             $userpPaginometro[] = Hash::get($dado, 'Livro.qtd_pagina');
             $totalUserpPaginometro = array_sum($userpPaginometro);
+            
         }
+        debug($totalUserpPaginometro);
         return $totalUserpPaginometro;
-
     }
+
 }
