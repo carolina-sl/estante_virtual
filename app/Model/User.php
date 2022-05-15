@@ -67,17 +67,14 @@ class User extends AppModel {
                 'User.id' => $id
             ]
         ]);
-
         $userpPaginometro = [];
-        
+        $totalUserpPaginometro = [];
+
         foreach ($dados as $dado) {
-        debug(Hash::get($dado, 'Livro.qtd_pagina'));
-            
-            $userpPaginometro[] = Hash::get($dado, 'Livro.qtd_pagina');
+            $userpPaginometro[] = (Hash::get($dado, 'Livro.qtd_pagina'));
             $totalUserpPaginometro = array_sum($userpPaginometro);
-            
         }
-        debug($totalUserpPaginometro);
+
         return $totalUserpPaginometro;
     }
 

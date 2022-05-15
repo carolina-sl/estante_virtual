@@ -88,7 +88,6 @@ class UsersController extends AppController {
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
 
-        
         $lidos = $this->User->Leitura->find('count', [
             'conditions' => [
                 'User.id' => $id,

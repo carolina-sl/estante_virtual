@@ -1,5 +1,11 @@
 <?php
 
+
+echo $this->Html->image("file-earmark-person.svg", array(
+    "alt" => "",
+    
+));
+
 echo $this->Html->tag('h1', 'Detalhes do Usuário');
    
     $colunas = array('id', 'Nome', 'Localidade', 'UF', 'Lidos', 'Lendo', 'Quero ler', 'Paginômetro');

@@ -30,6 +30,9 @@ App::uses('Controller', 'Controller');
  * @package		app.Controller
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
+
+App::uses('AppModel', 'Model');
+
 class AppController extends Controller {
 
     public $components = array(
@@ -49,5 +52,20 @@ class AppController extends Controller {
 //    function beforeFilter() {
 //        $this->Auth->allow('login', 'index');
 //    }
+    
+//    public function add() {
+//        if ($this->request->is('post') && !empty($this->request->data)) {
+//            $this->Model->create();
+//            if ($this->Model->save($this->request->data)) {
+//                $this->Flash->success(__('Livro cadastrado com sucesso'));
+////                return $this->redirect(['action' => 'index']);
+//            
+//            }
+//        }
+//    }
+    
+    protected function carolina() {
+        echo 'lalalal';
+    }
     
 }

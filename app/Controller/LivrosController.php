@@ -12,7 +12,7 @@ class LivrosController extends AppController {
     }
 
     public function add() {
-
+//        parent::add();
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->Livro->create();
             if ($this->Livro->save($this->request->data)) {
