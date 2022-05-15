@@ -64,7 +64,8 @@ class User extends AppModel {
                 'Livro.qtd_pagina'
             ],
             'conditions' => [
-                'User.id' => $id
+                'User.id' => $id,
+                'Leitura.situacao_leitura_id' => 2
             ]
         ]);
         $userpPaginometro = [];

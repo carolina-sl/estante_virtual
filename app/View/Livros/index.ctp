@@ -1,5 +1,7 @@
 <?php
 
+echo $this->Html->tag('h1', 'Lista de Livros');
+
 $colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS'];
 $livros = [];
 foreach ($dados as $dado) {

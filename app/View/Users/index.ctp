@@ -1,4 +1,5 @@
 <?php
+echo $this->Html->tag('h1', 'Lista de Usuários');
 
 $filtro =  $this->Form->create('User');
 $filtro .=  $this->Form->input('User.nome', ['required' => false]);

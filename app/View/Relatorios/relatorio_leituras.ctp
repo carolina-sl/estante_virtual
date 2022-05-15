@@ -1,6 +1,6 @@
 <?php
 
-echo $this->Html->tag('h1', 'Total de leituras por situação');
+echo $this->Html->tag('h1', 'Relatório - Total de leituras por situação');
 
 $colunas = ['TOTAL DE LEITURAS', 'TOTAL DE LIVROS LIDOS', 'TOTAL DE LIVROS LENDO', 'TOTAL DE LIVROS QUERO LER'];
  
