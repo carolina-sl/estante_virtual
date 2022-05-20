@@ -31,6 +31,7 @@ class UsersController extends AppController {
     public function add() {
         $this->loadModel('Endereco');
         $this->loadModel('Leitura');
+        debug($this->User);
 
         $usersEnderecos = $this->Endereco->find('list', [
             'fields' => [

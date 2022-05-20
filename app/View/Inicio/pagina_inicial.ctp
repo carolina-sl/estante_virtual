@@ -1,11 +1,21 @@
 <?php
 
+echo $this->Html->image("oculos_logo.png", array(
+    "alt" => "",
+    'url' => array('controller' => 'relatorios', 'action' => 'relatorio_leituras')
+));
+
 echo $this->Html->tag('h1', 'Bem vindo à Estante Virtual');
+echo '<br>';
+echo $this->Html->para('text', 'Organize suas leituras, estabeleça metas e escolha livros de acordo com seu momento!', array('class' => 'my-class', 'target' => '_blank'));
+
+echo $this->Html->tag('span', null, array('class' => 'welcome'));
 
 echo '<br>';
 
 // icones de imagem
-// 
+
+
 // livros
 echo $this->Html->image("biblioteca.png", array(
     "alt" => "",

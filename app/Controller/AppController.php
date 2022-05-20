@@ -53,16 +53,16 @@ class AppController extends Controller {
 //        $this->Auth->allow('login', 'index');
 //    }
     
-//    public function add() {
-//        if ($this->request->is('post') && !empty($this->request->data)) {
-//            $this->Model->create();
-//            if ($this->Model->save($this->request->data)) {
-//                $this->Flash->success(__('Livro cadastrado com sucesso'));
-////                return $this->redirect(['action' => 'index']);
-//            
-//            }
-//        }
-//    }
+    /*public function add(Model $model) {
+        if ($this->request->is('post') && !empty($this->request->data)) {
+            $this->$model->create();
+            if ($this->$model->save($this->request->data)) {
+                $this->Flash->success(__('Livro cadastrado com sucesso'));
+                return $this->redirect(['action' => 'index']);
+            
+            }
+        }
+    }*/
     
     protected function carolina() {
         echo 'lalalal';
