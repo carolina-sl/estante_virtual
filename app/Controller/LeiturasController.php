@@ -51,7 +51,7 @@ class LeiturasController extends AppController {
             ]
         ]);
         
-        $situacao_leituras = $this->SituacaoLeitura->find('list', [
+        $situacaoLeituras = $this->SituacaoLeitura->find('list', [
             'fields' => [
                 'SituacaoLeitura.id',
                 'SituacaoLeitura.status'
@@ -62,7 +62,7 @@ class LeiturasController extends AppController {
         
         $this->set('users', $users);
         $this->set('livros', $livros);
-        $this->set('situacao_leituras', $situacao_leituras);
+        $this->set('situacaoLeituras', $situacaoLeituras);
         
 //        $this->set('leiturasUsers', $leiturasUsers);
 //        $this->set('leiturasLivros', $leiturasLivros);

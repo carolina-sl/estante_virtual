@@ -7,13 +7,23 @@ class LivrosController extends AppController {
     public function index() {
         $this->loadModel('Leitura');
         $dados = $this->Livro->find('all');
-        
+
+        if (!empty($this->request->data && $this->request->is('post', 'put'))) {
+
+            $dados = $this->Livro->find('all', [
+                'conditions' => [
+                    'Livro.titulo' => $this->request->data['Livro']['titulo']
+                ],
+                    //'group' => 'Livro.id'
+            ]);
+        }
+
         $this->set('dados', $dados);
     }
 
     public function add() {
 //        parent::add();
-        debug($this->Livro);
+        //debug($this->Livro);
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->Livro->create();
             if ($this->Livro->save($this->request->data)) {
@@ -22,16 +32,28 @@ class LivrosController extends AppController {
             }
         }
     }
-    
+
+    public function edit($id = null) {
+
+        if ($this->request->is(array('put', 'post'))) {
+
+            if ($this->Livro->save($this->request->data)) {
+                $this->Flash->success(__('Livro editado com sucesso'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Flash->success(__('Livro não pode modificado'));
+        }
+        $this->request->data = $this->Livro->findById($id);
+    }
+
     public function view($id = null) {
         $dado = $this->Livro->findById($id);
-        
+
         $this->loadModel('Leitura');
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
 
         $detalheLeitura = $this->Livro->find('all', [
-           
         ]);
 
         debug($detalheLeitura);

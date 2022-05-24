@@ -1,5 +1,7 @@
 <?php
 
+echo $this->Html->tag('h1', 'Cadastro de Leituras');
+
 echo $this->Form->create('Leitura');
 
 //echo $this->Form->input('titulo', ['label' => 'Título', 'required' => false]);
@@ -9,6 +11,3 @@ echo $this->Form->input('situacao_leitura_id', ['required' => false]);
 echo $this->Form->submit('Cadastrar');
 echo $this->Form->end();
 
-//debug($leiturasUsers);
-
-debug($situacao_leituras);

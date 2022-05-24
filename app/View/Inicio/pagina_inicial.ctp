@@ -2,7 +2,7 @@
 
 echo $this->Html->image("oculos_logo.png", array(
     "alt" => "",
-    'url' => array('controller' => 'relatorios', 'action' => 'relatorio_leituras')
+    'url' => array('controller' => 'leituras', 'action' => 'index')
 ));
 
 echo $this->Html->tag('h1', 'Bem vindo à Estante Virtual');

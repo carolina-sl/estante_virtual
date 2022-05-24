@@ -2,6 +2,10 @@
 
 echo $this->Html->tag('h1', 'Lista de Livros');
 
+$filtro =  $this->Form->create('Livro');
+$filtro .=  $this->Form->input('Livro.titulo', ['required' => false]);
+$filtro .=  $this->Form->end('Pesquisar');
+
 $colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS'];
 $livros = [];
 foreach ($dados as $dado) {
@@ -16,4 +20,5 @@ foreach ($dados as $dado) {
 $body = $this->Html->tableCells($livros);
 $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
 
+echo $filtro;
 echo $this->Html->tag('table', $header . $body);

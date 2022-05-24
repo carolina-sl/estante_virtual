@@ -13,7 +13,7 @@ class User extends AppModel {
     public $validate = [
         'nome' => 'notBlank',
         'username' => 'notBlank',
-        'password' => 'validacao_senha'
+        //'password' => 'validacao_senha'
     ];
     public $belongsTo = [
         'Endereco' => [
@@ -53,9 +53,9 @@ class User extends AppModel {
         return $dados;
     }
 
-    public function validacaoSenha() {
+    /*public function validacaoSenha() {
         return 'lalala';
-    }
+    }*/
 
     public function userPaginometro($id) {
 
