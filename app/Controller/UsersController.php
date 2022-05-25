@@ -4,10 +4,10 @@ App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
 
-//    public function beforeFilter() {
-//        parent::beforeFilter();
-//        $this->Auth->allow('logout', 'add');
-//    }
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('logout', 'add');
+    }
 
     public function index() {
         $dados = $this->User->find('all', [
@@ -24,7 +24,7 @@ class UsersController extends AppController {
                 'group' => 'User.id'
             ]);
         }
-
+        
         $this->set('dados', $dados);
     }
 

@@ -22,6 +22,9 @@ foreach ($dados as $dado) {
 //$body = $this->Html->tableCells($rowUser);
 $body = $this->Html->tableCells($users);
 $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
+echo $this->Html->link(__('Cadastrar Usuário'), ['action' => 'add']);
+echo '<br>';
+echo $this->Html->link(__('Sair'), ['action' => 'logout']);
  
 echo $filtro;
 echo $this->Html->tag('table', $header . $body);

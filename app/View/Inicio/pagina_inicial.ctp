@@ -5,7 +5,9 @@ echo $this->Html->image("oculos_logo.png", array(
     'url' => array('controller' => 'leituras', 'action' => 'index')
 ));
 
-echo $this->Html->tag('h1', 'Bem vindo à Estante Virtual');
+$userLogado = Hash::get($this->Session->read(), 'Auth.User.nome');
+
+echo $this->Html->tag('h1', "$userLogado, bem vindo à Estante Virtual ");
 echo '<br>';
 echo $this->Html->para('text', 'Organize suas leituras, estabeleça metas e escolha livros de acordo com seu momento!', array('class' => 'my-class', 'target' => '_blank'));
 

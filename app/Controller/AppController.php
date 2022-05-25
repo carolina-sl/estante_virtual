@@ -31,27 +31,25 @@ App::uses('Controller', 'Controller');
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 
-App::uses('AppModel', 'Model');
-
 class AppController extends Controller {
 
     public $components = array(
         'DebugKit.Toolbar',
         'Session',
         'Flash',
-//        'Auth' => array(
-//            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
-//            'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
-//            'authError' => 'Você deve fazer login para ter acesso a essa área!',
-//            'authenticate' => array(
-//                'Form'
-//            )
-//        )
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'inicio', 'action' => 'pagina_inicial'),
+            'authError' => 'Você deve fazer login para ter acesso a essa área!',
+            'authenticate' => array(
+                'Form'
+            )
+        )
     );
     
-//    function beforeFilter() {
-//        $this->Auth->allow('login', 'index');
-//    }
+    function beforeFilter() {
+        $this->Auth->allow('login');
+    }
     
     /*public function add(Model $model) {
         if ($this->request->is('post') && !empty($this->request->data)) {

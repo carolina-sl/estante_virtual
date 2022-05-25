@@ -23,11 +23,14 @@ class LeiturasController extends AppController {
             ],
             'join' => [
                 'SituacaoLeitura' => [
-                    'Leitura.situacaoo_leitura_id' => 'SituacaoLeitura.id' 
+                    'Leitura.situacao_leitura_id' => 'SituacaoLeitura.id' 
                 ]
+            ],
+            'order' => [
+                'Leitura.id' => 'asc'
             ]
         ]);
-        //debug($dados);
+        
         $this->set('dados', $dados);
     }
     
