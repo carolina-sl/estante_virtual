@@ -55,7 +55,7 @@ class EmailConfig {
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
         'username' => 'carolina.lauffer@gmail.com',
-        'password' => 'Pipoca7220787@',
+        'password' => '',
         'transport' => 'Smtp',
         'tls' => false
     );
