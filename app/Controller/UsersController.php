@@ -1,12 +1,15 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 class UsersController extends AppController {
-
+    
+    public $components = array('Qimage');
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('logout', 'add');
+        
     }
 
     public function index() {
@@ -26,6 +29,14 @@ class UsersController extends AppController {
         }
         
         $this->set('dados', $dados);
+        
+        /*$Email = new CakeEmail('gmail');
+        $Email->from(array('carolina.lauffer@gmail.com' => 'Estante Virtual'));
+        $Email->to('carolzinha_serafim@yahoo.com.br');
+        $Email->subject('teste de envio de e-mail');
+        $Email->send('lalalala');
+        debug($Email);*/
+        
     }
 
     public function add() {
@@ -57,10 +68,23 @@ class UsersController extends AppController {
                 return $this->redirect(['action' => 'index']);
             }
         }
+        
+        $this->Qimage->watermark(array('file' => '/img/oculos_logo.png'));
+        //$this->Qimage->copy(array('file' => $_FILES[''], 'path' => '/img/fotos/'));
+        //$this->Qimage->copy(array('file' => $_FILES['imagem'], 'path' => '/img/'));
     }
 
     public function edit($id = null) {
-
+        $this->loadModel('Endereco');
+        
+        $usersEnderecos = $this->Endereco->find('list', [
+            'fields' => [
+                'Endereco.id',
+                'Endereco.logradouro',
+            ]
+        ]);
+        
+        $this->set('usersEnderecos', $usersEnderecos);
         if ($this->request->is(array('put', 'post'))) {
 
             if ($this->User->save($this->request->data)) {
@@ -129,6 +153,11 @@ class UsersController extends AppController {
     
     public function logout() {
         $this->redirect($this->Auth->logout());
+    }
+    
+    public function recuperar_senha() {
+        
+        echo 'Carolina lauffer';
     }
 
 }

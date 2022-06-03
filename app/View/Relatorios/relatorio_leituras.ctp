@@ -20,3 +20,9 @@ $colunas = ['TOTAL DE LEITURAS', 'TOTAL DE LIVROS LIDOS', 'TOTAL DE LIVROS LENDO
 
  echo $this->Html->tag('table', $header . $body);
  
+echo $this->Html->link(__('Cadastrar Leitura'), ['controller' => 'leituras', 'action' => 'add']);
+echo '<br>';
+echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pagina_inicial']);
+echo '<br>';
+echo $this->Html->link(__('Sair'), ['action' => 'logout']);
+ 

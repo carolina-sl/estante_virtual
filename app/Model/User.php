@@ -13,7 +13,7 @@ class User extends AppModel {
     public $validate = [
         'nome' => 'notBlank',
         'username' => 'notBlank',
-        //'password' => 'validacao_senha'
+        //'password' => 'valida_senha'
     ];
     public $belongsTo = [
         'Endereco' => [
@@ -24,9 +24,9 @@ class User extends AppModel {
         'Leitura' => [
             'className' => 'Leitura'
         ],
-            /* 'Endereco' => [
-              'className' => 'Endereco'
-              ] */
+        /*'Endereco' => [
+            'className' => 'Endereco'
+        ]*/
     ];
     public $virtualFields = array(
         'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
@@ -53,9 +53,11 @@ class User extends AppModel {
         return $dados;
     }
 
-    /*public function validacaoSenha() {
+    public function validaSenha($senha) {
+        
+        
         return 'lalala';
-    }*/
+    }
 
     public function userPaginometro($id) {
 

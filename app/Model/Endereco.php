@@ -8,7 +8,7 @@ class Endereco extends AppModel {
     public $hasMany = [
         'User' => [
             'className' => 'User',
-            'foreignKey' => 'endereco_id'
+            'foreignKey' => ''
         ]
     ];
 

@@ -40,7 +40,7 @@ class AppController extends Controller {
         'Auth' => array(
             'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'inicio', 'action' => 'pagina_inicial'),
-            'authError' => 'Você deve fazer login para ter acesso a essa área!',
+            //'authError' => 'Você deve fazer login para ter acesso a essa área!',
             'authenticate' => array(
                 'Form'
             )

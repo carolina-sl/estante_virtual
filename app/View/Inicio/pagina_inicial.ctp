@@ -19,7 +19,7 @@ echo '<br>';
 
 
 // livros
-echo $this->Html->image("biblioteca.png", array(
+echo $this->Html->image("pilha-de-livros.png", array(
     "alt" => "",
     'url' => array('controller' => 'livros', 'action' => 'index')
 ));
@@ -35,6 +35,14 @@ echo $this->Html->image("relatorios.png", array(
     "alt" => "",
     'url' => array('controller' => 'relatorios', 'action' => 'relatorio_leituras')
 ));
+
+// enderecos
+echo $this->Html->image("enderecos.png", array(
+    "alt" => "",
+    'url' => array('controller' => 'enderecos', 'action' => 'index')
+));
+
+echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
 
 /*echo $this->Html->style(array(
     'background' => '#FF1493',

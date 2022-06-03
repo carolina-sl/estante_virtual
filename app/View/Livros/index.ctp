@@ -19,6 +19,10 @@ foreach ($dados as $dado) {
  }
 $body = $this->Html->tableCells($livros);
 $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
-
+echo $this->Html->link(__('Cadastrar Livro'), ['action' => 'add']);
+echo '<br>';
+echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pagina_inicial']);
+echo '<br>';
+echo $this->Html->link(__('Sair'), ['action' => 'logout']);
 echo $filtro;
 echo $this->Html->tag('table', $header . $body);
