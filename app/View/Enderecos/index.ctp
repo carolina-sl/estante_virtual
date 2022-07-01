@@ -22,7 +22,6 @@ foreach ($dados as $dado) {
      //$rowUser[] = $users;
  }
  
- 
 //$body = $this->Html->tableCells($rowUser);
 $body = $this->Html->tableCells($enderecos);
 $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);

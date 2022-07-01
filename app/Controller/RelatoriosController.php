@@ -3,7 +3,7 @@
 App::uses('AppController', 'Controller');
 
 class RelatoriosController extends AppController {
-
+    
     public function relatorio_users() {
 
         $this->loadModel('Livro');
@@ -34,28 +34,6 @@ class RelatoriosController extends AppController {
         $this->loadModel('Endereco');
         $this->loadModel('User');
 
-
-        $consultaFindAll = $this->Leitura->find('first', [
-            'fields' => [
-                'Leitura.id',
-                'User.id',
-                'User.nome',
-                'User.dt_nascimento',
-                'User.endereco_id',
-                'Livro.id',
-                'SituacaoLeitura.id',
-                'SituacaoLeitura.status',
-                'Livro.titulo'
-            ],
-            'conditions' => [
-            ],
-            'contain' => [
-                'Endereco'
-            ]
-
-                //'group' => 'User.id'
-        ]);
-
         $virtualFieldsTotalsLeituras = $this->Leitura->find('all', [
             'fields' => [
                 'total_leituras',
@@ -66,7 +44,7 @@ class RelatoriosController extends AppController {
         ]);
 
         $this->set('virtualFieldsTotalsLeituras', $virtualFieldsTotalsLeituras);
-
+        
     }
 
 }

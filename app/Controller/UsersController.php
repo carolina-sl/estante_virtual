@@ -30,20 +30,12 @@ class UsersController extends AppController {
         
         $this->set('dados', $dados);
         
-        /*$Email = new CakeEmail('gmail');
-        $Email->from(array('carolina.lauffer@gmail.com' => 'Estante Virtual'));
-        $Email->to('carolzinha_serafim@yahoo.com.br');
-        $Email->subject('teste de envio de e-mail');
-        $Email->send('lalalala');
-        debug($Email);*/
-        
     }
 
     public function add() {
         $this->loadModel('Endereco');
         $this->loadModel('Leitura');
-        //debug($this->User);
-
+        
         $usersEnderecos = $this->Endereco->find('list', [
             'fields' => [
                 'Endereco.id',
@@ -157,7 +149,22 @@ class UsersController extends AppController {
     
     public function recuperar_senha() {
         
-        echo 'Carolina lauffer';
-    }
+       
+        if ($this->request->is('post') && !empty($userEmail)) {
 
+            $Email = new CakeEmail('gmail');
+            $Email->from(array('testepython1204@gmail' => 'Estante Virtual'));
+            $Email->to($userEmail);
+            $Email->subject('Recuperação de senha');
+            $Email->send('Click no link abaixo para recuperar sua senha');
+            //debug($Email);
+            echo 'E-mail enviado para '.$Email;
+        }
+        
+    }
+    
+    public function teste(){
+        echo 'teste';
+    }
+    
 }

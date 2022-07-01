@@ -54,7 +54,7 @@ class EmailConfig {
         public $gmail = array(
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
-        'username' => 'carolina.lauffer@gmail.com',
+        'username' => '',
         'password' => '',
         'transport' => 'Smtp',
         'tls' => false
@@ -67,7 +67,7 @@ class EmailConfig {
 		'port' => 465,
 		'timeout' => 30,
 		'username' => 'carolina.lauffer@gmail.com',
-		'password' => 'Pipoca7220787@',
+		'password' => '',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',

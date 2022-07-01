@@ -13,7 +13,20 @@ class User extends AppModel {
     public $validate = [
         'nome' => 'notBlank',
         'username' => 'notBlank',
-        //'password' => 'valida_senha'
+        'email' => [
+            'uniqueEmailRule' => [
+                'rule' => ['isUnique'],
+                'message' => 'Esse email já está cadastrado para outro usuário!'
+            ],
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Preencha o campo de email'
+            ]
+        ],
+        'password' => [
+            'rule' => array('minLength', '8'),
+            'message' => 'Sua senha tem que ter no mínimo 8 caracteres.'
+        ]
     ];
     public $belongsTo = [
         'Endereco' => [
@@ -23,17 +36,14 @@ class User extends AppModel {
     public $hasMany = [
         'Leitura' => [
             'className' => 'Leitura'
-        ],
-        /*'Endereco' => [
-            'className' => 'Endereco'
-        ]*/
+        ]
     ];
     public $virtualFields = array(
         'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
         'total_users' => 'COUNT(User.id)',
         'maior_idade' => 'SUM(CASE WHEN TIMESTAMPDIFF(year, dt_nascimento, now()) >= 18 THEN 1 ELSE 0 END)'
     );
-
+    
     public function beforeSave($options = Array()) {
         if (isset($this->data[$this->alias]['password'])) {
             $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
@@ -51,12 +61,6 @@ class User extends AppModel {
         }
 
         return $dados;
-    }
-
-    public function validaSenha($senha) {
-        
-        
-        return 'lalala';
     }
 
     public function userPaginometro($id) {
@@ -80,5 +84,5 @@ class User extends AppModel {
 
         return $totalUserpPaginometro;
     }
-
+    
 }

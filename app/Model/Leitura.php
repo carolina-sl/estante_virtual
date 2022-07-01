@@ -24,6 +24,5 @@ class Leitura extends AppModel {
         'total_situacao_leitura_quero_ler' => 'SUM(CASE WHEN situacao_leitura_id = 4 THEN 1 ELSE 0 END)'
         
     ];
-
     
 }

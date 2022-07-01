@@ -5,7 +5,7 @@ $filtro =  $this->Form->create('User');
 $filtro .=  $this->Form->input('User.nome', ['required' => false]);
 $filtro .=  $this->Form->end('Pesquisar');
 
-$colunas = ['ID', 'NOME','USERNAME', 'LOGRADOURO', 'EDITAR'];
+$colunas = ['ID', 'NOME','USERNAME', 'LOGRADOURO', 'EMAIL',  'EDITAR'];
 $users = [];
 foreach ($dados as $dado) {
      //$users = [];
@@ -14,6 +14,7 @@ foreach ($dados as $dado) {
          $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
          substr_replace($dado['User']['username'], '***.***', 4, -3),
          $dado['Endereco']['logradouro'],
+         $dado['User']['email'],
          $this->Html->image("botao-editar.png", array(
         "alt" => "",
         'url' => array('controller' => 'users', 'action' => 'edit', $dado['User']['id'])

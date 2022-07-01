@@ -10,9 +10,9 @@ echo $this->Form->create('User');
 echo $this->Form->hidden('User.id');
 echo $this->Form->input('nome', ['label' => 'Nome', 'required' => false]);
 echo $this->Form->input('username', ['label' => 'CPF', 'required' => false]);
+echo $this->Form->input('email', ['label' => 'Email', 'required' => false]);
+//echo $this->Form->input('dt_nascimento', ['label' => 'Data de nascimento', 'required' => false]);
 echo $this->Form->input('endereco_id', ['label' => 'Endereço', 'options' => $usersEnderecos]);
-echo $this->Form->input('role');
-echo $this->Form->input('role');
 
 echo $this->Form->end('Cadastrar');
 echo $this->Form->end();
