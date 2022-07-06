@@ -46,5 +46,41 @@ class RelatoriosController extends AppController {
         $this->set('virtualFieldsTotalsLeituras', $virtualFieldsTotalsLeituras);
         
     }
+    
+    public function total_leituras(){
+        $this->loadModel('Leitura');
+        
+        $relatorioTotalLeituras = $this->Leitura->find('first', [
+            'fields' => [
+                'Leitura.id',
+                'Livro.titulo',
+                'Leitura.situacao_leitura_id',
+                'SituacaoLeitura.status',
+                'total_leituras',
+                
+            ],
+            'conditions' => [
+                'Leitura.situacao_leitura_id' => 4
+            ],
+            'contain' => [
+                'SituacaoLeitura' => [
+                    'SituacaoLeitura.id' => 'Leitura.situacao_leitura_id'
+                ],
+                'fields' => [
+                    'SituacaoLeitura.id',
+                    'SituacaoLeitura.status'
+                ],
+                'Livro' => [
+                    'Livro.id' => 'Leitura.livro_id'
+                ]
+            ],
+            'group' => [
+                //'Leitura.livro_id'
+            ]
+        ]);
+        
+        $this->set('relatorioTotalLeituras', $relatorioTotalLeituras);
+        
+    }
 
 }

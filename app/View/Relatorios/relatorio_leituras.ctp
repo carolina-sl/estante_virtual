@@ -5,7 +5,6 @@ echo $this->Html->tag('h1', 'Relatório - Total de leituras por situação');
 $colunas = ['TOTAL DE LEITURAS', 'TOTAL DE LIVROS LIDOS', 'TOTAL DE LIVROS LENDO', 'TOTAL DE LIVROS QUERO LER'];
  
  $leituras = [];
-
  foreach ($virtualFieldsTotalsLeituras as $virtualFieldsTotalLeitura) {
      $leituras [] = [
         //$this->Html->link(__['controller' => 'leituras', 'action' => 'add']);
@@ -15,7 +14,7 @@ $colunas = ['TOTAL DE LEITURAS', 'TOTAL DE LIVROS LIDOS', 'TOTAL DE LIVROS LENDO
         //$this->Html->link(__($virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_quero_ler']))
         $this->Html->link(
             $virtualFieldsTotalLeitura['Leitura']['total_leituras'],
-            ['controller' => 'relatorios', 'action' => 'relatorio_users']
+            ['controller' => 'relatorios', 'action' => 'total_leituras']
         ),
         $this->Html->link(
             $virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_lido'],
