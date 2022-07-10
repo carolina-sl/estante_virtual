@@ -12,7 +12,7 @@ foreach ($dados as $dado) {
      //$users = [];
      $enderecos[] = [
          $dado['Endereco']['id'],
-         $this->Html->link($dado['Endereco']['logradouro'], array('controller' => 'enderecos', 'action' => 'view', $dado['Endereco']['id'])),
+         $dado['Endereco']['logradouro'],
          $dado['Endereco']['bairro'],
          $dado['Endereco']['numero'],
          $dado['Endereco']['complemento'],
@@ -29,7 +29,7 @@ echo $this->Html->link(__('Cadastrar Endereço'), ['action' => 'add']);
 echo '<br>';
 echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pagina_inicial']);
 echo '<br>';
-echo $this->Html->link(__('Sair'), ['action' => 'logout']);
+echo $this->Html->link(__('Sair'), ['controller' => 'users'], ['action' => 'logout']);
  
 echo $filtro;
 echo $this->Html->tag('table', $header . $body);

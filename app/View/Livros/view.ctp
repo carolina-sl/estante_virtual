@@ -1,24 +1,26 @@
 <?php
 
-echo $this->Html->tag('h1', 'Detalhes do Usuário');
-    
-    $colunas = array('id', 'Nome', 'Localidade', 'UF', 'Lidos', 'Lendo', 'Quero ler');
-    $header = $this->Html->tableHeaders($colunas);
-    $leitura = Hash::get($dado, 'Leitura');
+echo $this->Html->tag('h1', $this->Html->image("detalhe_livro.png", array(
+    "alt" => "",
 
-        $detalhar = array();
-            $detalhar[] = array(
-                $dado['User']['id'],
-                $dado['User']['nome'],
-                $dado['Endereco']['cidade'],
-                $dado['Endereco']['uf'],
-                $lidos,
-                $lendo,
-                $quero_ler
-            );
+)));
+
+echo $this->Html->tag('h1', 'Detalhes do Livro');
     
-    $body = $this->Html->tableCells($detalhar);
-    echo $this->Html->tag('table', $header . $body);
-    echo $this->Html->link(__('Voltar'), ['action' => 'index']);
-    
-    echo $this->Html->css('forms');
+$colunas = array('id', 'Titulo', 'Descrição', 'Autor', 'Quantidade de Páginas');
+$header = $this->Html->tableHeaders($colunas);
+
+    $detalhar = array();
+        $detalhar[] = array(
+            $dado['Livro']['id'],
+            $dado['Livro']['titulo'],
+            $dado['Livro']['descricao'],
+            $dado['Livro']['autor'],
+            $dado['Livro']['qtd_pagina']
+        );
+
+$body = $this->Html->tableCells($detalhar);
+echo $this->Html->tag('table', $header . $body);
+echo $this->Html->link(__('Voltar'), ['action' => 'index']);
+
+echo $this->Html->css('forms');

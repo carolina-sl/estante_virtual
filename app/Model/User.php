@@ -12,7 +12,16 @@ class User extends AppModel {
     ];
     public $validate = [
         'nome' => 'notBlank',
-        'username' => 'notBlank',
+        'username' => [
+            'uniqueUsername' => [
+                'rule' => ['isUnique'],
+                'message' => 'Esse username já está cadastrado na base de dados.'
+            ],
+            'notBlank' => [
+                'rule' => 'notBlank',
+                'message' => 'Preencha o campo corretamente.'
+            ]
+        ],
         'email' => [
             'uniqueEmailRule' => [
                 'rule' => ['isUnique'],
@@ -24,8 +33,8 @@ class User extends AppModel {
             ]
         ],
         'password' => [
-            'rule' => array('minLength', '8'),
-            'message' => 'Sua senha tem que ter no mínimo 8 caracteres.'
+            'rule' => array('minLength', '4'),
+            'message' => 'Sua senha tem que ter no mínimo 4 caracteres.'
         ]
     ];
     public $belongsTo = [

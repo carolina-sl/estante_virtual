@@ -5,7 +5,10 @@ App::uses('CakeEmail', 'Network/Email');
 
 class UsersController extends AppController {
     
-    public $components = array('Qimage');
+    public $components = [
+        'Qimage'
+        ];
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('logout', 'add');
@@ -30,6 +33,7 @@ class UsersController extends AppController {
         
         $this->set('dados', $dados);
         
+        echo $this->Qimage->copy(array('file' => $_FILES['foto_1'], 'path' => '/img/fotos/'));
     }
 
     public function add() {

@@ -17,13 +17,7 @@ class LivrosController extends AppController {
                     //'group' => 'Livro.id'
             ]);
         }
-        
-//        $consultaTotalDePaginas = $this->Livro->find('first', [
-//            'fields' => [
-//                'Livro.total_qtd_paginas'
-//            ]
-//        ]);
-//        $totalDePaginas = $consultaTotalDePaginas['Livro']['total_qtd_paginas'];
+
         $this->set('dados', $dados);
 //        $this->set('totalDePaginas', $totalDePaginas);
     }
@@ -55,15 +49,6 @@ class LivrosController extends AppController {
 
     public function view($id = null) {
         $dado = $this->Livro->findById($id);
-
-        $this->loadModel('Leitura');
-        $this->loadModel('Livro');
-        $this->loadModel('SituacaoLeitura');
-
-        $detalheLeitura = $this->Livro->find('all', [
-        ]);
-
-        debug($detalheLeitura);
         $this->set(compact('dado'));
     }
 

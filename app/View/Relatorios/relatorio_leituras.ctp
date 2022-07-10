@@ -14,19 +14,19 @@ $colunas = ['TOTAL DE LEITURAS', 'TOTAL DE LIVROS LIDOS', 'TOTAL DE LIVROS LENDO
         //$this->Html->link(__($virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_quero_ler']))
         $this->Html->link(
             $virtualFieldsTotalLeitura['Leitura']['total_leituras'],
-            ['controller' => 'relatorios', 'action' => 'total_leituras']
+            ['controller' => 'leituras', 'action' => 'index']
         ),
         $this->Html->link(
             $virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_lido'],
-            ['controller' => 'relatorios', 'action' => 'relatorio_users']
+            ['controller' => 'leituras', 'action' => 'leitura_situacao_livros_lidos_relatorio']
         ),
         $this->Html->link(
             $virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_lendo'],
-            ['controller' => 'relatorios', 'action' => 'relatorio_users']
+            ['controller' => 'leituras', 'action' => 'leitura_situacao_livros_lendo_relatorio']
         ),
         $this->Html->link(
             $virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_quero_ler'],
-            ['controller' => 'relatorios', 'action' => 'relatorio_users']
+            ['controller' => 'leituras', 'action' => 'leitura_situacao_livros_quero_ler_relatorio']
         )
          
      ];

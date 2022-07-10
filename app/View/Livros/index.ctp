@@ -12,7 +12,7 @@ $totalQtdPaginas = [];
 foreach ($dados as $dado) {
      $livros[] = [
          $dado['Livro']['id'],
-         $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['titulo'])),
+         $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['id'])),
          $dado['Livro']['descricao'],
          $dado['Livro']['autor'],
          $dado['Livro']['qtd_pagina']
@@ -31,6 +31,6 @@ echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pa
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['controller' => 'users','action' => 'logout']);
 echo $filtro;
-echo $this->Html->tableCells($footer);
+// $this->Html->tableCells($footer);
 echo $this->Html->tag('table', $header . $body . $baseboard);
 

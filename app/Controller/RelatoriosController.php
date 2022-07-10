@@ -50,17 +50,16 @@ class RelatoriosController extends AppController {
     public function total_leituras(){
         $this->loadModel('Leitura');
         
-        $relatorioTotalLeituras = $this->Leitura->find('first', [
+        $relatorioTotalLeituras = $this->Leitura->find('all', [
             'fields' => [
-                'Leitura.id',
+                'User.nome',
                 'Livro.titulo',
-                'Leitura.situacao_leitura_id',
-                'SituacaoLeitura.status',
-                'total_leituras',
-                
+                'SituacaoLeitura.status'
+                /*'Leitura.id',
+                'total_leituras',*/
             ],
             'conditions' => [
-                'Leitura.situacao_leitura_id' => 4
+                //'Leitura.situacao_leitura_id' => 4
             ],
             'contain' => [
                 'SituacaoLeitura' => [

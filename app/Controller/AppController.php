@@ -47,6 +47,17 @@ class AppController extends Controller {
         )
     );
     
+     
+    public $paginate = array(
+        'conditions' => array(),
+        'limit' => 5,
+        'order' => array(
+            
+        ), 
+        'class' => 'class="pagination'
+    );
+
+    
     function beforeFilter() {
         $this->Auth->allow('login');
     }
@@ -61,9 +72,7 @@ class AppController extends Controller {
             }
         }
     }*/
+
     
-    protected function carolina() {
-        echo 'lalalal';
-    }
     
 }
