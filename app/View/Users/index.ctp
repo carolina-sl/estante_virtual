@@ -4,8 +4,8 @@ echo $this->Html->tag('h1', 'Lista de Usuários');
 $filtro =  $this->Form->create('User');
 $filtro .=  $this->Form->input('User.nome', ['required' => false]);
 $filtro .=  $this->Form->end('Pesquisar');
-
-$colunas = ['ID', 'NOME','USERNAME', 'LOGRADOURO', 'EMAIL',  'EDITAR'];
+debug($dados);
+$colunas = ['ID', 'NOME','USERNAME', 'EMAIL',  'EDITAR'];
 $users = [];
 foreach ($dados as $dado) {
      //$users = [];
@@ -13,7 +13,7 @@ foreach ($dados as $dado) {
          $dado['User']['id'],
          $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
          substr_replace($dado['User']['username'], '***.***', 4, -3),
-         $dado['Endereco']['logradouro'],
+         //$dado['Endereco']['logradouro'],
          $dado['User']['email'],
          $this->Html->image("botao-editar.png", array(
         "alt" => "",
@@ -22,8 +22,6 @@ foreach ($dados as $dado) {
      ];
      //$rowUser[] = $users;
  }
- 
- 
 //$body = $this->Html->tableCells($rowUser);
 $body = $this->Html->tableCells($users);
 $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);

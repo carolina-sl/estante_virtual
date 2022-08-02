@@ -20,6 +20,11 @@ foreach ($dados as $dado) {
  $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
  $body = $this->Html->tableCells($totais);
  
- echo $this->Html->tag('table', $header . $body);
- */
+ echo $this->Html->tag('table', $header . $body);*/
+
+debug($dados_User);
+//debug($dados_Livro);
+//debug($dados_Endereco);
+//debug($dados_Leitura);
+ 
  

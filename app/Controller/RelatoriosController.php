@@ -11,18 +11,33 @@ class RelatoriosController extends AppController {
         $this->loadModel('Leitura');
         $this->loadModel('Endereco');
 
-        // virtualFields
-        $dados = $this->User->find('first', [
-            'conditions' => [
-            ],
+        
+        $dados_User = $this->User->find('all', [
             'fields' => [
-                'total_uf',
-                'total_users',
-                'maior_idade',
+                'User.id'
+            ],
+            'order' => [
+                'User.id'
             ]
         ]);
+        
+        $dados_Livro = $this->Livro->find('all', [
+            
+        ]);
+        
+        $dados_Leitura = $this->Leitura->find('all', [
+            
+        ]);
+        
+        $dados_Endereco = $this->Endereco->find('all', [
+            
+        ]);
+        
 
-        $this->set('dados', $dados);
+        $this->set('dados_User', $dados_User);
+        $this->set('dados_Livro', $dados_Livro);
+        $this->set('dados_Endereco', $dados_Endereco);
+        
         
     }
 
@@ -79,6 +94,30 @@ class RelatoriosController extends AppController {
         ]);
         
         $this->set('relatorioTotalLeituras', $relatorioTotalLeituras);
+        
+    }
+    
+    public function teste() {
+        
+        $this->loadModel('Endereco');
+        $this->loadModel('Leitura');
+        $this->loadModel('Livro');
+        $this->loadModel('Resenha');
+        $this->loadModel('User');
+        $this->loadModel('Leitura2');
+        
+        $testeEndereco = $this->Endereco->find('all', []);
+        $testeLeitura = $this->Leitura->find('all', []);
+        $testeLivro = $this->Livro->find('all', []);
+        $testeResenha = $this->Resenha->find('all', []);
+        $testeUser = $this->User->find('all', []);
+        
+//        debug($testeEndereco);
+//        debug($testeLeitura);
+//        debug($testeLivro);
+//        debug($testeResenha);
+        debug($testeUser);
+//        debug($testeLeitura2);
         
     }
 

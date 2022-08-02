@@ -33,19 +33,19 @@ class UsersController extends AppController {
         
         $this->set('dados', $dados);
         
-        echo $this->Qimage->copy(array('file' => $_FILES['foto_1'], 'path' => '/img/fotos/'));
+        
     }
 
     public function add() {
         $this->loadModel('Endereco');
         $this->loadModel('Leitura');
         
-        $usersEnderecos = $this->Endereco->find('list', [
+        /*$usersEnderecos = $this->Endereco->find('list', [
             'fields' => [
                 'Endereco.id',
                 'Endereco.logradouro'
             ]
-        ]);
+        ]);*/
 
         $usersLeituras = $this->Leitura->find('list', [
             'fields' => [
@@ -54,12 +54,13 @@ class UsersController extends AppController {
             ]
         ]);
 
-        $this->set('usersEnderecos', $usersEnderecos);
-        $this->set('usersLeituras', $usersLeituras);
+        /*$this->set('usersEnderecos', $usersEnderecos);
+        $this->set('usersLeituras', $usersLeituras);*/
 
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->User->create();
-            if ($this->User->save($this->request->data)) {
+            $this->Endereco->create();
+            if ($this->User->save($this->request->data) and $this->Endereco->save($this->request->data)) {
                 $this->Flash->success(__('Usuário cadastrado com sucesso'));
                 return $this->redirect(['action' => 'index']);
             }

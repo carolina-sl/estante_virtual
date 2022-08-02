@@ -38,17 +38,29 @@ class User extends AppModel {
         ]
     ];
     public $belongsTo = [
-        'Endereco' => [
-            'className' => 'Endereco'
-        ]
+        
     ];
     public $hasMany = [
         'Leitura' => [
             'className' => 'Leitura'
+        ],
+        'Endereco' => [
+            'className' => 'Endereco',
+            
         ]
     ];
+    
+    public $hasOne = [
+        /*'Leitura' => [
+            'className' => 'Leitura'
+        ]*/
+        /*'Endereco' => [
+            'className' => 'Endereco',
+            
+        ]*/
+    ];
     public $virtualFields = array(
-        'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
+        //'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
         'total_users' => 'COUNT(User.id)',
         'maior_idade' => 'SUM(CASE WHEN TIMESTAMPDIFF(year, dt_nascimento, now()) >= 18 THEN 1 ELSE 0 END)'
     );
