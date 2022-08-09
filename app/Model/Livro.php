@@ -13,7 +13,8 @@ class Livro extends AppModel {
     public $validate = [
         'titulo' => 'notBlank',
         'descricao' => 'notBlank',
-        'autor' => 'notBlank'
+        'autor' => 'notBlank',
+        'qtd_pagina' => 'notBlank'
     ];
     
 }

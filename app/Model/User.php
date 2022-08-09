@@ -37,9 +37,6 @@ class User extends AppModel {
             'message' => 'Sua senha tem que ter no mínimo 4 caracteres.'
         ]
     ];
-    public $belongsTo = [
-        
-    ];
     public $hasMany = [
         'Leitura' => [
             'className' => 'Leitura'
@@ -49,16 +46,7 @@ class User extends AppModel {
             
         ]
     ];
-    
-    public $hasOne = [
-        /*'Leitura' => [
-            'className' => 'Leitura'
-        ]*/
-        /*'Endereco' => [
-            'className' => 'Endereco',
-            
-        ]*/
-    ];
+
     public $virtualFields = array(
         //'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
         'total_users' => 'COUNT(User.id)',

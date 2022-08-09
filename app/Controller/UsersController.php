@@ -36,16 +36,10 @@ class UsersController extends AppController {
         
     }
 
-    public function add() {
+    /*public function add() {
         $this->loadModel('Endereco');
         $this->loadModel('Leitura');
-        
-        /*$usersEnderecos = $this->Endereco->find('list', [
-            'fields' => [
-                'Endereco.id',
-                'Endereco.logradouro'
-            ]
-        ]);*/
+
 
         $usersLeituras = $this->Leitura->find('list', [
             'fields' => [
@@ -54,22 +48,32 @@ class UsersController extends AppController {
             ]
         ]);
 
-        /*$this->set('usersEnderecos', $usersEnderecos);
-        $this->set('usersLeituras', $usersLeituras);*/
-
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->User->create();
             $this->Endereco->create();
-            if ($this->User->save($this->request->data) and $this->Endereco->save($this->request->data)) {
+            $this->request->data['Endereco']['user_id'] = $this->User->id;
+            if ($this->User->saveAll($this->request->data) && $this->Endereco->saveAll($this->request->data)) {
                 $this->Flash->success(__('Usuário cadastrado com sucesso'));
                 return $this->redirect(['action' => 'index']);
             }
         }
-        
         $this->Qimage->watermark(array('file' => '/img/oculos_logo.png'));
         //$this->Qimage->copy(array('file' => $_FILES[''], 'path' => '/img/fotos/'));
         //$this->Qimage->copy(array('file' => $_FILES['imagem'], 'path' => '/img/'));
+    }*/
+    
+    public function add() {
+    if (!empty($this->request->data)) {
+        $user = $this->User->save($this->request->data);
+        if (!empty($user)) {
+            $this->request->data['Endereco']['user_id'] = $this->User->id;
+
+            $this->User->Endereco->save($this->request->data);
+            $this->Flash->success(__('Usuário cadastrado com sucesso'));
+            return $this->redirect(['action' => 'index']);
+        }
     }
+}
 
     public function edit($id = null) {
         $this->loadModel('Endereco');
@@ -109,6 +113,17 @@ class UsersController extends AppController {
         $this->loadModel('Leitura');
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
+        
+        $userLeituras = $this->Leitura->find('all', [
+            'fields' => [
+                'Livro.titulo'
+            ],
+            'conditions' => [
+                'Leitura.user_id' => $this->request->params['pass']
+            ],
+        ]);
+        
+        //debug($userLeituras);
 
         $lidos = $this->User->Leitura->find('count', [
             'conditions' => [
@@ -133,7 +148,7 @@ class UsersController extends AppController {
         
         $paginometro = $this->User->userPaginometro($id);
         
-        $this->set(compact('dado', 'lidos', 'lendo', 'quero_ler', 'paginometro'));
+        $this->set(compact('dado', 'lidos', 'lendo', 'quero_ler', 'paginometro', 'userLeituras'));
         
     }
 

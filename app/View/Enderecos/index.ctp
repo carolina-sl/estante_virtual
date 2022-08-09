@@ -1,7 +1,7 @@
 <?php
 
 echo $this->Html->tag('h1', 'Lista de Enderecos');
-debug($dados);
+
 $filtro =  $this->Form->create('Endereco');
 $filtro .=  $this->Form->input('Endereco.logradouro', ['required' => false]);
 $filtro .=  $this->Form->end('Pesquisar');

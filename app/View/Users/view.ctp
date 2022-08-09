@@ -8,29 +8,34 @@
 
 echo $this->Html->tag('h1', $this->Html->image("leitor.png", array(
     "alt" => "",
-
 )));
 echo $this->Html->tag('h1', 'Detalhes do Usuário');
 
-$colunas = array('id', 'Nome', 'Localidade', 'UF', 'Lidos', 'Lendo', 'Quero ler', 'Paginômetro');
+$colunas = array('id', 'Nome', 'Logradouro', 'UF','Localidade', 'Lidos', 'Lendo', 'Quero ler', 'Paginômetro');
 $header = $this->Html->tableHeaders($colunas);
 $leitura = Hash::get($dado, 'Leitura');
-
+debug($userLeituras);
     $detalhar = array();
+    foreach ($dado['Endereco'] as $key => $value){
         $detalhar[] = array(
             $dado['User']['id'],
             $dado['User']['nome'],
-            $dado['Endereco']['cidade'],
-            $dado['Endereco']['uf'],
+            $dado['Endereco'][$key]['logradouro'],
+            $dado['Endereco'][$key]['cidade'],
+            $dado['Endereco'][$key]['uf'],
             $lidos,
             $lendo,
             $quero_ler,
-            $paginometro ? $paginometro : 0
+            $this->Html->link($paginometro ? $paginometro : 0, array('controller' => 'leituras', 'action' => 'index', $dado['User']['id'])),
+            $this->Html->link($paginometro ? $paginometro : 0, array('controller' => 'livros', 'action' => 'index'))
         );
+    }
     
 $body = $this->Html->tableCells($detalhar);
 echo $this->Html->tag('table', $header . $body);
 echo $this->Html->link(__('Voltar'), ['action' => 'index']);
+echo '<br>';
+echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
 
 //echo $this->Html->css('forms');
 

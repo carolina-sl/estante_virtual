@@ -7,11 +7,6 @@ $colunas = ['TOTAL DE LEITURAS', 'TOTAL DE LIVROS LIDOS', 'TOTAL DE LIVROS LENDO
  $leituras = [];
  foreach ($virtualFieldsTotalsLeituras as $virtualFieldsTotalLeitura) {
      $leituras [] = [
-        //$this->Html->link(__['controller' => 'leituras', 'action' => 'add']);
-        //$this->Html->link(__($virtualFieldsTotalLeitura['Leitura']['total_leituras'])),
-        //$this->Html->link(__($virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_lido'])),
-        //$this->Html->link(__($virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_lendo'])),
-        //$this->Html->link(__($virtualFieldsTotalLeitura['Leitura']['total_situacao_leitura_quero_ler']))
         $this->Html->link(
             $virtualFieldsTotalLeitura['Leitura']['total_leituras'],
             ['controller' => 'leituras', 'action' => 'index']
@@ -42,5 +37,6 @@ echo $this->Html->link(__('Cadastrar Leitura'), ['controller' => 'leituras', 'ac
 echo '<br>';
 echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pagina_inicial']);
 echo '<br>';
-echo $this->Html->link(__('Sair'), ['action' => 'logout']);
+echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
+echo '<br>';
 

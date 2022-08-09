@@ -26,6 +26,16 @@ class LeiturasController extends AppController {
             ]
         ]);
         
+        if (!empty($this->request->data && $this->request->is('post', 'put'))) {
+            
+            $dados = $this->Leitura->find('all', [
+                'conditions' => [
+                    'User.nome' => $this->request->data['User']['nome']
+                ],
+                'group' => 'User.id'
+            ]);
+        }
+        
         $this->set('dados', $dados);
     }
     
