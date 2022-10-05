@@ -8,5 +8,9 @@ class Endereco extends AppModel {
     public $hasMany = [
         
     ];
-
+    public $hasOne = [
+        'User' => [
+            'className' => 'User'
+        ],
+    ];
 }

@@ -37,8 +37,7 @@ class RelatoriosController extends AppController {
         $this->set('dados_User', $dados_User);
         $this->set('dados_Livro', $dados_Livro);
         $this->set('dados_Endereco', $dados_Endereco);
-        
-        
+       
     }
 
     public function relatorio_leituras() {

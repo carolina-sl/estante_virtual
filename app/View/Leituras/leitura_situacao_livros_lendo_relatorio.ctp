@@ -1,19 +1,16 @@
 <?php
 
-$colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA'];
+$colunas = ['ID', 'USUÁRIO','LIVRO'];
  
  $leituras = [];
  
  foreach ($dados as $dado) {
      $leituras [] = [
          $dado['Leitura']['id'],
-         //$dado['User']['nome'],
          $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
-         $dado['Livro']['titulo'],
-         $dado['SituacaoLeitura']['status']
+         $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['id']))
      ];
  }
-
 
  $body = $this->Html->tableCells($leituras);
 

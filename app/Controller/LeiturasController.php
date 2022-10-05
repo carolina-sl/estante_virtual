@@ -160,7 +160,5 @@ class LeiturasController extends AppController {
         
         $this->set('dados', $dados);
     }
-    
-    
-
+   
 }

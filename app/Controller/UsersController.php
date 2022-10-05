@@ -32,37 +32,12 @@ class UsersController extends AppController {
         }
         
         $this->set('dados', $dados);
-        
-        
+ 
     }
-
-    /*public function add() {
-        $this->loadModel('Endereco');
-        $this->loadModel('Leitura');
-
-
-        $usersLeituras = $this->Leitura->find('list', [
-            'fields' => [
-                'Leitura.id',
-                'Leitura.livro_id'
-            ]
-        ]);
-
-        if ($this->request->is('post') && !empty($this->request->data)) {
-            $this->User->create();
-            $this->Endereco->create();
-            $this->request->data['Endereco']['user_id'] = $this->User->id;
-            if ($this->User->saveAll($this->request->data) && $this->Endereco->saveAll($this->request->data)) {
-                $this->Flash->success(__('Usuário cadastrado com sucesso'));
-                return $this->redirect(['action' => 'index']);
-            }
-        }
-        $this->Qimage->watermark(array('file' => '/img/oculos_logo.png'));
-        //$this->Qimage->copy(array('file' => $_FILES[''], 'path' => '/img/fotos/'));
-        //$this->Qimage->copy(array('file' => $_FILES['imagem'], 'path' => '/img/'));
-    }*/
     
     public function add() {
+     
+    $listaEnderecoUfs = $this->User->Endereco->ufs;
     if (!empty($this->request->data)) {
         $user = $this->User->save($this->request->data);
         if (!empty($user)) {
@@ -73,6 +48,9 @@ class UsersController extends AppController {
             return $this->redirect(['action' => 'index']);
         }
     }
+    
+    $this->set(compact('listaEnderecoUfs'));
+
 }
 
     public function edit($id = null) {
@@ -116,14 +94,17 @@ class UsersController extends AppController {
         
         $userLeituras = $this->Leitura->find('all', [
             'fields' => [
-                'Livro.titulo'
+                'Livro.titulo',
+                'Livro.qtd_pagina',
+                'Livro.qtd_pagina',
+                'Leitura.id',
+                'Leitura.situacao_leitura_id',
+                'Leitura.user_id'
             ],
             'conditions' => [
                 'Leitura.user_id' => $this->request->params['pass']
             ],
         ]);
-        
-        //debug($userLeituras);
 
         $lidos = $this->User->Leitura->find('count', [
             'conditions' => [
@@ -182,9 +163,22 @@ class UsersController extends AppController {
         }
         
     }
-    
-    public function teste(){
-        echo 'teste';
+
+    public function leituras_livros_lidos_paginometro($id = null) {
+        
+        $dado = $this->User->findById($id);
+        
+        $idUsuario = $id;
+        
+        $leiturasLidosPaginometro = $this->User->find('all', [
+            'Fields' => [
+                'User.id',
+                'Leitura.id'
+            ]
+        ]);
+        
+        debug($leiturasLidosPaginometro);
+            
     }
     
 }

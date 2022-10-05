@@ -17,14 +17,12 @@ class LivrosController extends AppController {
                     //'group' => 'Livro.id'
             ]);
         }
-
+        
         $this->set('dados', $dados);
-//        $this->set('totalDePaginas', $totalDePaginas);
     }
 
     public function add() {
-//        parent::add();
-        //debug($this->Livro);
+
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->Livro->create();
             if ($this->Livro->save($this->request->data)) {
