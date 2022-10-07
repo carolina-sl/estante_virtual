@@ -2,10 +2,10 @@
 
 class LivrosControllerTest extends ControllerTestCase {
 
-    public $fixtures = array(
+    public $fixtures = [
         'app.livro',
         'app.leitura',
-    );
+    ];
 
     public function testIndex() {
         $this->testAction('livros');
@@ -21,6 +21,7 @@ class LivrosControllerTest extends ControllerTestCase {
                 'qtd_pagina' => '10'
             ]
         ];
+        
         $result = $this->testAction(
                 '/livros/add',
                 [
@@ -44,13 +45,16 @@ class LivrosControllerTest extends ControllerTestCase {
 
     public function testGetView() {
         $this->testAction('livros/view/1');
+        $this->assertNotEmpty(Hash::get($this->vars, 'dado'));
     }
 
     public function testGetViewUndefined() {
         $this->testAction('livros/view');
+        $this->assertEmpty(Hash::get($this->vars, 'dado'));
     }
 
     public function testGetViewIdNotExist() {
         $this->testAction('livros/view/789');
+        $this->assertEmpty(Hash::get($this->vars, 'dado'));
     }
 }

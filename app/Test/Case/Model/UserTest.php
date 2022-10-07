@@ -4,8 +4,8 @@ class UserTest extends CakeTestCase {
 
     public $fixtures = [
         'app.user',
-       // 'app.leitura',
-       // 'app.situacao_leitura',
+            // 'app.leitura',
+            // 'app.situacao_leitura',
     ];
     public $User = null;
 
@@ -71,4 +71,5 @@ class UserTest extends CakeTestCase {
 
         $this->assertEquals('10', $result);
     }
+    
 }
