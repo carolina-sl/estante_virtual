@@ -1,19 +1,14 @@
 <?php
 
-/**
- * Leitura Fixture
- */
 class LeituraFixture extends CakeTestFixture {
 
-    /**
-     * Import
-     *
-     * @var array
-     */
-    public $name = 'Leitura';
-    public $import = [
-        'model' => 'Leitura',
-        'records' => false
+    public $name = 'Leitura';    
+    public $fields = [
+        'id' => ['type' => 'integer', 'key' => 'primary'],
+        'user_id' => ['type' => 'integer'],
+        'livro_id' => ['type' => 'integer'],
+        'situacao_leitura_id' => ['type' => 'integer'],
+        
     ];
 
     public function init() {

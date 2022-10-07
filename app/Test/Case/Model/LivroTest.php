@@ -27,8 +27,8 @@ class LivroTest extends CakeTestCase {
         $data = ['titulo' => '   '];
         $saved = $this->Livro->save($data);
         $this->assertFalse($saved);
-
     }
+
     public function testEmptyDescricao() {
         $data = ['descricao' => null];
         $saved = $this->Livro->save($data);
@@ -41,9 +41,6 @@ class LivroTest extends CakeTestCase {
         $data = ['descricao' => '   '];
         $saved = $this->Livro->save($data);
         $this->assertFalse($saved);
-
     }
 
 }
-
-?>
