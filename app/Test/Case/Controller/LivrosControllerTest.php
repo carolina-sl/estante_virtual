@@ -7,20 +7,10 @@ class LivrosControllerTest extends ControllerTestCase {
         'app.leitura',
     );
 
-    /**
-     * test Index method
-     *
-     * @return void
-     */
     public function testIndex() {
         $this->testAction('livros');
     }
 
-    /**
-     * test Add method
-     *
-     * @return void
-     */
     public function testAdd() {
 
         $data = [
@@ -33,9 +23,34 @@ class LivrosControllerTest extends ControllerTestCase {
         ];
         $result = $this->testAction(
                 '/livros/add',
-                array('data' => $data, 'method' => 'post')
+                [
+                    'data' => $data,
+                    'method' => 'post'
+                ]
         );
-
     }
 
+    public function testGetEdit() {
+        $this->testAction('livros/edit/1');
+    }
+
+    public function testGetEditUndefined() {
+        $this->testAction('livros/edit');
+    }
+
+    public function testGetEditIdNotExist() {
+        $this->testAction('livros/edit/789');
+    }
+
+    public function testGetView() {
+        $this->testAction('livros/view/1');
+    }
+
+    public function testGetViewUndefined() {
+        $this->testAction('livros/view');
+    }
+
+    public function testGetViewIdNotExist() {
+        $this->testAction('livros/view/789');
+    }
 }

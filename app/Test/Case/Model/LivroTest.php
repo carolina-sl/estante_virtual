@@ -42,5 +42,4 @@ class LivroTest extends CakeTestCase {
         $saved = $this->Livro->save($data);
         $this->assertFalse($saved);
     }
-
 }

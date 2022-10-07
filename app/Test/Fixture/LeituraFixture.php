@@ -2,13 +2,12 @@
 
 class LeituraFixture extends CakeTestFixture {
 
-    public $name = 'Leitura';    
+    public $name = 'Leitura';
     public $fields = [
         'id' => ['type' => 'integer', 'key' => 'primary'],
         'user_id' => ['type' => 'integer'],
         'livro_id' => ['type' => 'integer'],
-        'situacao_leitura_id' => ['type' => 'integer'],
-        
+        'situacao_leitura_id' => ['type' => 'integer']
     ];
 
     public function init() {
@@ -29,7 +28,7 @@ class LeituraFixture extends CakeTestFixture {
                 'id' => 3,
                 'user_id' => '1',
                 'livro_id' => '3',
-                'situacao_leitura_id' => '3' // Quero ler
+                'situacao_leitura_id' => '4' // Quero ler
             ]
         ];
         parent::init();
