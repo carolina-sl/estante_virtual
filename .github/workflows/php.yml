@@ -35,7 +35,7 @@ jobs:
     - name: Set up MySQL
       run: |
           sudo /etc/init.d/mysql start
-          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY','');' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+          mysql -e "CREATE DATABASE ${{ env.DB_DATABASE }};SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY','');" -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
           
     - name: config stuffs
       run: |
