@@ -33,7 +33,7 @@ class LeiturasControllerTest extends ControllerTestCase {
         $dados = Hash::get($this->vars, 'dados', []);
         $countDados = count($dados);
 
-        $this->assertTrue((1 == $countDados));
+        $this->assertTrue(($countDados == 1), "count dados esperado 1 recebido {$countDados}");
     }
 
     public function testGetLeituraSituacaoLivrosLendoRelatorio() {
@@ -42,7 +42,7 @@ class LeiturasControllerTest extends ControllerTestCase {
         $dados = Hash::get($this->vars, 'dados', []);
         $countDados = count($dados);
 
-        $this->assertTrue((1 == $countDados));
+        $this->assertTrue(($countDados == 1), "count dados esperado 1 recebido {$countDados}");
     }
 
     public function testGetLeituraSituacaoLivrosQueroLerRelatorio() {
@@ -51,7 +51,7 @@ class LeiturasControllerTest extends ControllerTestCase {
         $dados = Hash::get($this->vars, 'dados', []);
         $countDados = count($dados);
 
-        $this->assertTrue((1 == $countDados));
+        $this->assertTrue(($countDados == 1), "count dados esperado 1 recebido {$countDados}");
     }
 
 }

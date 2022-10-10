@@ -16,5 +16,5 @@ class Livro extends AppModel {
         'autor' => 'notBlank',
         'qtd_pagina' => 'notBlank'
     ];
-    
+
 }

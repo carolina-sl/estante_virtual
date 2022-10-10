@@ -10,7 +10,6 @@ class User extends AppModel {
     public $name = 'User';
     public $findMethods = [
     ];
-    
     public $validate = [
         'nome' => 'notBlank',
         'username' => [
@@ -46,16 +45,14 @@ class User extends AppModel {
         ],
         'Endereco' => [
             'className' => 'Endereco',
-            
         ]
     ];
-
     public $virtualFields = array(
-        //'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
-        //'total_users' => 'COUNT(User.id)',
-        //'maior_idade' => 'SUM(CASE WHEN TIMESTAMPDIFF(year, dt_nascimento, now()) >= 18 THEN 1 ELSE 0 END)'
+            //'total_uf' => 'SUM(CASE WHEN endereco_id is null THEN 0 ELSE 1 END)',
+            //'total_users' => 'COUNT(User.id)',
+            //'maior_idade' => 'SUM(CASE WHEN TIMESTAMPDIFF(year, dt_nascimento, now()) >= 18 THEN 1 ELSE 0 END)'
     );
-    
+
     public function beforeSave($options = Array()) {
         if (isset($this->data[$this->alias]['password'])) {
             $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
@@ -93,16 +90,17 @@ class User extends AppModel {
             $userpPaginometro[] = (Hash::get($dado, 'Livro.qtd_pagina'));
             $totalUserpPaginometro = array_sum($userpPaginometro);
         }
-        
+
         return $totalUserpPaginometro;
     }
-    
+
     public function validate_password($password) {
-        
+
         if (ctype_alpha($password['password']) || is_numeric($password['password'])) {
             return false;
         }
-        
+
         return true;
     }
+
 }

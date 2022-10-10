@@ -18,10 +18,10 @@ class RelatoriosControllerTest extends ControllerTestCase {
         $totalLendo = Hash::get($this->vars, 'virtualFieldsTotalsLeituras.0.Leitura.total_situacao_leitura_lendo');
         $totalQueroLer = Hash::get($this->vars, 'virtualFieldsTotalsLeituras.0.Leitura.total_situacao_leitura_quero_ler');
 
-        $this->assertTrue(3 == $totalLeituras, "total leitura esperado 3 recebido {$totalLeituras}");
-        $this->assertTrue(1 == $totalLidos, "total lidos esperado 1 recebido {$totalLidos}");
-        $this->assertTrue(1 == $totalLendo, "total lendo esperado 1 recebido {$totalLendo}");
-        $this->assertTrue(1 == $totalQueroLer, "total quero ler esperado 1 recebido {$totalQueroLer}");
+        $this->assertTrue($totalLeituras == 3, "total leitura esperado 3 recebido {$totalLeituras}");
+        $this->assertTrue($totalLidos == 1, "total lidos esperado 1 recebido {$totalLidos}");
+        $this->assertTrue($totalLendo == 1, "total lendo esperado 1 recebido {$totalLendo}");
+        $this->assertTrue($totalQueroLer == 1, "total quero ler esperado 1 recebido {$totalQueroLer}");
     }
     
     public function testTotalLeituras() {
