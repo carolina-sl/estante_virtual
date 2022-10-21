@@ -81,6 +81,10 @@ class User extends AppModel {
             'conditions' => [
                 'User.id' => $id,
                 'Leitura.situacao_leitura_id' => 2
+            ],
+            'contain' => [
+                'User',
+                'Livro'
             ]
         ]);
         $userpPaginometro = [];

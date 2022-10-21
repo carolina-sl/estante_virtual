@@ -4,11 +4,11 @@ App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
 
 class UsersController extends AppController {
-    
+
     public $components = [
         'Qimage'
-        ];
-    
+    ];
+
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('logout', 'add');
@@ -22,7 +22,7 @@ class UsersController extends AppController {
         ]);
 
         if (!empty($this->request->data && $this->request->is('post', 'put'))) {
-            
+
             $dados = $this->User->find('all', [
                 'conditions' => [
                     'User.nome' => $this->request->data['User']['nome']
@@ -30,39 +30,39 @@ class UsersController extends AppController {
                 'group' => 'User.id'
             ]);
         }
-        
+
         $this->set('dados', $dados);
  
     }
-    
+
     public function add() {
-     
-    $listaEnderecoUfs = $this->User->Endereco->ufs;
-    if (!empty($this->request->data)) {
-        $user = $this->User->save($this->request->data);
-        if (!empty($user)) {
-            $this->request->data['Endereco']['user_id'] = $this->User->id;
 
-            $this->User->Endereco->save($this->request->data);
-            $this->Flash->success(__('Usuário cadastrado com sucesso'));
-            return $this->redirect(['action' => 'index']);
+        $listaEnderecoUfs = $this->User->Endereco->ufs;
+        if (!empty($this->request->data)) {
+            $user = $this->User->save($this->request->data);
+            if (!empty($user)) {
+                $this->request->data['Endereco']['user_id'] = $this->User->id;
+
+                $this->User->Endereco->save($this->request->data);
+                $this->Flash->success(__('Usuário cadastrado com sucesso'));
+                return $this->redirect(['action' => 'index']);
+            }
         }
-    }
-    
-    $this->set(compact('listaEnderecoUfs'));
 
-}
+        $this->set(compact('listaEnderecoUfs'));
+
+    }
 
     public function edit($id = null) {
         $this->loadModel('Endereco');
-        
+
         $usersEnderecos = $this->Endereco->find('list', [
             'fields' => [
                 'Endereco.id',
                 'Endereco.logradouro',
             ]
         ]);
-        
+
         $this->set('usersEnderecos', $usersEnderecos);
         if ($this->request->is(array('put', 'post'))) {
 
@@ -87,11 +87,11 @@ class UsersController extends AppController {
 
     public function view($id = null) {
         $dado = $this->User->findById($id);
-        
+
         $this->loadModel('Leitura');
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
-        
+
         $userLeituras = $this->Leitura->find('all', [
             'fields' => [
                 'Livro.titulo',
@@ -101,6 +101,9 @@ class UsersController extends AppController {
                 'Leitura.situacao_leitura_id',
                 'Leitura.user_id'
             ],
+            'contain' => [
+                'Livro'
+            ],
             'conditions' => [
                 'Leitura.user_id' => $this->request->params['pass']
             ],
@@ -108,27 +111,27 @@ class UsersController extends AppController {
 
         $lidos = $this->User->Leitura->find('count', [
             'conditions' => [
-                'User.id' => $id,
+                'Leitura.user_id' => $id,
                 'Leitura.situacao_leitura_id' => 2
             ]
         ]);
-        
+
         $lendo = $this->User->Leitura->find('count', [
             'conditions' => [
-                'User.id' => $id,
+                'Leitura.user_id' => $id,
                 'Leitura.situacao_leitura_id' => 3
             ]
         ]);
-        
+
         $quero_ler = $this->User->Leitura->find('count', [
             'conditions' => [
-                'User.id' => $id,
+                'Leitura.user_id' => $id,
                 'Leitura.situacao_leitura_id' => 4
             ]
         ]);
-        
+
         $paginometro = $this->User->userPaginometro($id);
-        
+
         $this->set(compact('dado', 'lidos', 'lendo', 'quero_ler', 'paginometro', 'userLeituras'));
         
     }
@@ -143,14 +146,14 @@ class UsersController extends AppController {
             );
         }
     }
-    
+
     public function logout() {
         $this->redirect($this->Auth->logout());
     }
-    
+
     public function recuperar_senha() {
-        
-       
+
+
         if ($this->request->is('post') && !empty($userEmail)) {
 
             $Email = new CakeEmail('gmail');
@@ -159,26 +162,26 @@ class UsersController extends AppController {
             $Email->subject('Recuperação de senha');
             $Email->send('Click no link abaixo para recuperar sua senha');
             //debug($Email);
-            echo 'E-mail enviado para '.$Email;
+            echo 'E-mail enviado para ' . $Email;
         }
         
     }
 
     public function leituras_livros_lidos_paginometro($id = null) {
-        
+
         $dado = $this->User->findById($id);
-        
+
         $idUsuario = $id;
-        
+
         $leiturasLidosPaginometro = $this->User->find('all', [
             'Fields' => [
                 'User.id',
                 'Leitura.id'
             ]
         ]);
-        
+
         debug($leiturasLidosPaginometro);
             
     }
-    
+
 }
