@@ -11,7 +11,7 @@ class RelatoriosController extends AppController {
         $this->loadModel('Livro');
         $this->loadModel('Endereco');
         $this->loadModel('User');
-
+        
         $virtualFieldsTotalsLeituras = $this->Leitura->find('all', [
             'fields' => [
                 'total_leituras',
@@ -20,7 +20,7 @@ class RelatoriosController extends AppController {
                 'total_situacao_leitura_quero_ler'
             ]
         ]);
-
+        
         $this->set('virtualFieldsTotalsLeituras', $virtualFieldsTotalsLeituras);
         
     }
@@ -33,11 +33,6 @@ class RelatoriosController extends AppController {
                 'User.nome',
                 'Livro.titulo',
                 'SituacaoLeitura.status'
-                /*'Leitura.id',
-                'total_leituras',*/
-            ],
-            'conditions' => [
-                //'Leitura.situacao_leitura_id' => 4
             ],
             'contain' => [
                 'SituacaoLeitura' => [
@@ -50,9 +45,6 @@ class RelatoriosController extends AppController {
                 'Livro' => [
                     'Livro.id' => 'Leitura.livro_id'
                 ]
-            ],
-            'group' => [
-                //'Leitura.livro_id'
             ]
         ]);
         

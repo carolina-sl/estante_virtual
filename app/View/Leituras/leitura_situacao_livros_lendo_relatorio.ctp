@@ -4,12 +4,9 @@ $colunas = ['ID', 'USUÁRIO','LIVRO'];
 $colunasDadoEmpty = ['NENHUM DADO ENCONTRADO'];
 
 $leituras = [];
-
- if (empty($dados)) {
-     
+if (empty($dados)) {
      echo $this->Html->div('empty', '<h1>Nenhum dado encontrado<h1>');   
-     
- }else {
+} else {
     foreach ($dados as $dado) {
         $leituras [] = [
             $dado['Leitura']['id'],
@@ -17,14 +14,10 @@ $leituras = [];
             $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['id']))
         ];
     }
-
     $body = $this->Html->tableCells($leituras);
-
     $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), array('class' => 'thead-light'));
-
     echo $this->Html->tag('table', $header . $body);
- 
- }
+}
  
 echo $this->Html->link(__('Cadastrar Leitura'), ['controller' => 'leituras', 'action' => 'add']);
 echo '<br>';

@@ -8,7 +8,6 @@ echo $this->Form->input('situacao_leitura_id', ['required' => false, 'empty' => 
 echo $this->Form->submit('Cadastrar');
 echo $this->Form->end();
 
-echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pagina_inicial']);
+echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pagina_inicial');
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['action' => 'logout']);
-

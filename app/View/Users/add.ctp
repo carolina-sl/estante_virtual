@@ -16,7 +16,7 @@ echo $this->Form->input('Endereco.cidade', ['label' => 'Cidade', 'required' => f
 echo $this->Form->input('Endereco.uf', [
     'label' => 'UF',
     'type' => 'select',
-    'options' => $listaEnderecoUfs,
+    'options' => $listaUfsEndereco,
     'required' => false,
     ]);
 
@@ -28,7 +28,8 @@ echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pa
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['action' => 'logout']);
 
-echo $this->Form->input('imagem', array('type' => 'file'));
-echo '<br>';
-echo $this->Form->submit('Enviar imagem');
+//debug($this->request->data);
+//echo $this->Form->input('imagem', array('type' => 'file'));
+//echo '<br>';
+//echo $this->Form->submit('Enviar imagem');
 

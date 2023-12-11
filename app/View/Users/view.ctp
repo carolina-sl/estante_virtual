@@ -20,8 +20,8 @@ $detalhar = array();
             $dado['User']['id'],
             $dado['User']['nome'],
             $dado['Endereco'][$key]['logradouro'],
-            $dado['Endereco'][$key]['cidade'],
             $dado['Endereco'][$key]['uf'],
+            $dado['Endereco'][$key]['cidade'],
             $lidos,
             $lendo,
             $quero_ler,
@@ -31,6 +31,8 @@ $detalhar = array();
 
 $body = $this->Html->tableCells($detalhar);
 echo $this->Html->tag('table', $header . $body);
+echo $this->Html->link(__('Cadastrar Leitura'), ['controller' => 'users', 'action' => 'cadastrar_leitura']);
+echo '<br>';
 echo $this->Html->link(__('Voltar'), ['action' => 'index']);
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
