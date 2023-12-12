@@ -63,7 +63,11 @@ class LeiturasController extends AppController {
                 'SituacaoLeitura.status'
             ]
         ]);
-
+        
+        $userLogado = Hash::get($this->Session->read(), 'Auth.User.id');
+        if ($this->request->is('get')) {
+            $this->request->data['Leitura']['user_id'] = $userLogado;
+        }
         $this->set('users', $users);
         $this->set('livros', $livros);
         $this->set('situacaoLeituras', $situacaoLeituras);
