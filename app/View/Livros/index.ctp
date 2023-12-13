@@ -6,16 +6,20 @@ $filtro =  $this->Form->create('Livro');
 $filtro .=  $this->Form->input('Livro.titulo', ['required' => false, 'multiple' => true]);
 $filtro .=  $this->Form->end('Pesquisar');
 
-$colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS'];
+$colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS', 'EDITAR'];
 $livros = [];
 $totalQtdPaginas = [];
 foreach ($dados as $dado) {
      $livros[] = [
-         $dado['Livro']['id'],
-         $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['id'])),
-         $dado['Livro']['descricao'],
-         $dado['Livro']['autor'],
-         $dado['Livro']['qtd_pagina']
+        $dado['Livro']['id'],
+        $this->Html->link($dado['Livro']['titulo'], array('controller' => 'livros', 'action' => 'view', $dado['Livro']['id'])),
+        $dado['Livro']['descricao'],
+        $dado['Livro']['autor'],
+        $dado['Livro']['qtd_pagina'],
+        $this->Html->image("botao-editar.png", array(
+        "alt" => "",
+        'url' => array('controller' => 'livros', 'action' => 'edit', $dado['Livro']['id'])
+        ))
     ];
     $totalQtdPaginas [] = $dado['Livro']['qtd_pagina'];
  }

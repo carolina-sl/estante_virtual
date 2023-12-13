@@ -80,6 +80,18 @@ class LeiturasController extends AppController {
             }
         }
     }
+    
+    public function edit($id = null) {
+
+        if ($this->request->is(array('put', 'post'))) {
+            if ($this->Leitura->save($this->request->data)) {
+                $this->Flash->success(__('Leitura editada com sucesso'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Flash->success(__('Leitura não pode modificado'));
+        }
+        $this->request->data = $this->Leitura->findById($id);
+    }
 
     public function view($id = null) {
         $dado = $this->Leitura->findById($id);

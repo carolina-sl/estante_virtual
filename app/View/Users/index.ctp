@@ -10,12 +10,12 @@ $users = [];
 foreach ($dados as $dado) {
      //$users = [];
      $users[] = [
-         $dado['User']['id'],
-         $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
-         substr_replace($dado['User']['username'], '***.***', 4, -3),
-         //$dado['Endereco']['logradouro'],
-         $dado['User']['email'],
-         $this->Html->image("botao-editar.png", array(
+        $dado['User']['id'],
+        $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
+        substr_replace($dado['User']['username'], '***.***', 4, -3),
+        //$dado['Endereco']['logradouro'],
+        $dado['User']['email'],
+        $this->Html->image("botao-editar.png", array(
         "alt" => "",
         'url' => array('controller' => 'users', 'action' => 'edit', $dado['User']['id'])
         ))
