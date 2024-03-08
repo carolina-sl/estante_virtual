@@ -9,9 +9,11 @@ class UsersController extends AppController {
         'Qimage'
         ];
     
+    public $layout = 'bootstrap';
+            
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('logout', 'add', 'index');
+        $this->Auth->allow('logout');
         
     }
 
@@ -40,8 +42,8 @@ class UsersController extends AppController {
         $this->loadModel('Uf');
         $listaUfsEndereco = $this->Uf->find('list', [
             'fields' => [
-                'id',
-                'unidade_federacao'
+                'uf',
+                'uf'
             ]
         ]);
         if (!empty($this->request->data)) {
@@ -113,21 +115,21 @@ class UsersController extends AppController {
         $lidos = $this->User->Leitura->find('count', [
             'conditions' => [
                 'User.id' => $id,
-                'Leitura.situacao_leitura_id' => 2
+                'Leitura.situacao_leitura_id' => 1
             ]
         ]);
         
         $lendo = $this->User->Leitura->find('count', [
             'conditions' => [
                 'User.id' => $id,
-                'Leitura.situacao_leitura_id' => 3
+                'Leitura.situacao_leitura_id' => 2
             ]
         ]);
         
         $quero_ler = $this->User->Leitura->find('count', [
             'conditions' => [
                 'User.id' => $id,
-                'Leitura.situacao_leitura_id' => 4
+                'Leitura.situacao_leitura_id' => 3
             ]
         ]);
         $userId = $this->request->params['pass']; 

@@ -1,11 +1,5 @@
 <?php
 
-
-//echo $this->Html->image("file-earmark-person.svg", array(
-//    "alt" => "",
-//    
-//));
-
 echo $this->Html->tag('h1', $this->Html->image("leitor.png", array(
     "alt" => "",
 )));
