@@ -15,7 +15,7 @@ if (empty($dados)) {
     }
     $body = $this->Html->tableCells($leituras);
     $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), array('class' => 'thead-light'));
-    echo $this->Html->tag('table', $header . $body);
+    echo $this->Html->tag('table', $header . $body, ['class' => 'table']);
 }
 echo $this->Html->link(__('Cadastrar Leitura'), ['controller' => 'leituras', 'action' => 'add']);
 echo '<br>';

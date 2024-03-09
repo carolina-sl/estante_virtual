@@ -2,9 +2,15 @@
 
 echo $this->Html->tag('h1', 'Lista de Livros');
 
-$filtro =  $this->Form->create('Livro');
-$filtro .=  $this->Form->input('Livro.titulo', ['required' => false, 'multiple' => true]);
-$filtro .=  $this->Form->end('Pesquisar');
+$filtro =  $this->Form->create('Livro', ['class' => 'form-inline']);
+$filtro .=  $this->Form->input('Livro.titulo', [
+    'required' => false,
+    'label' => ['text' => 'Título', 'class' => 'sr-only'],
+    'class' => 'form-control mb-2 mr-sm-2',
+    'div' => false,
+    'placeholder' => 'Título'
+]);
+$filtro .=  $this->Form->button('Pesquisar', ['type' => 'submit', 'class' => 'btn btn-info']);
 
 $colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS', 'EDITAR'];
 $livros = [];
@@ -26,7 +32,7 @@ foreach ($dados as $dado) {
 
 $footer = ['TOTAL', '', '', '', array_sum($totalQtdPaginas)];
 $body = $this->Html->tableCells($livros);
-$header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), ['class' => 'thead-light']);
+$header = $this->Html->tag('thead', $this->Html->tag('thead', $this->Html->tableHeaders($colunas)));
 $baseboard = $this->Html->tag('thead', $this->Html->tableHeaders($footer), ['class' => 'thead-light']);
 
 echo $this->Html->link(__('Cadastrar Livro'), ['action' => 'add']);
@@ -35,6 +41,5 @@ echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pa
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['controller' => 'users','action' => 'logout']);
 echo $filtro;
-// $this->Html->tableCells($footer);
-echo $this->Html->tag('table', $header . $body . $baseboard);
+echo $this->Html->tag('table', $header . $body . $baseboard, ['class' => 'table']);
 

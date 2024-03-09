@@ -33,7 +33,7 @@ App::uses('Controller', 'Controller');
 
 class AppController extends Controller {
     
-//    public $layout = 'bootstrap';
+    public $layout = 'bootstrap';
     public $components = array(
         'DebugKit.Toolbar',
         'Session',

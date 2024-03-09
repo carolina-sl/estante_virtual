@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -13,43 +12,49 @@
     
     ?>
 
-  </head>
-  
-  <body>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-          <a class="navbar-brand" href="#">Estante Virtual</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+    </head>
 
-          <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-        <?php echo  $this->Html->link('Usuários', '/users', ['class' => 'nav-link']) ?>
-                  </li>
-                  <li class="nav-item">
-            <?php echo  $this->Html->link('Livros', '/livros', ['class' => 'nav-link']) ?>
-                  </li>
-                  <li class="nav-item">
-            <?php echo  $this->Html->link('Leituras', '/leituras', ['class' => 'nav-link']) ?>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdown01">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                  </li>
-              </ul>
-              <!--    <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                  </form>-->
-          </div>
-      </nav>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#">Estante Virtual</a>
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>-->
 
-      <main role="main" class="container">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"> <?php echo  $this->Html->link('Início', ['controller' => 'inicio', 'action' => 'pagina_inicial'], ['class' => 'nav-link']) ?> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <?php echo  $this->Html->link('Usuários', '/users', ['class' => 'nav-link']) ?> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <?php echo  $this->Html->link('Livros', '/livros', ['class' => 'nav-link']) ?> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <?php echo  $this->Html->link('Leituras', '/leituras', ['class' => 'nav-link']) ?> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"> <?php echo  $this->Html->link('Relatórios', ['controller' => 'relatorios', 'action' => 'relatorio_leituras'], ['class' => 'nav-link']) ?> </a>
+                    </li>
+<!--                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>-->
+                </ul>
+                <!--    <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>-->
+            </div>
+        </nav>
+
+        <main role="main" class="container">
     <?php 
     
     echo $this->Flash->render();
@@ -58,13 +63,13 @@
     
     ?>
 
-          <!-- content -->
-      </main>
+            <!-- content -->
+        </main>
 
 <?php
     echo $this->Html->script('jquery-3.4.1.slim.min.js');
     echo $this->Html->script('bootstrap.bundle.min.js');
 ?>
 
-  </body>
+    </body>
 </html>

@@ -27,10 +27,7 @@ foreach ($virtualFieldsTotalsLeituras as $virtualFieldsTotalLeitura) {
 }
  
 $body = $this->Html->tableCells($leituras);
-
 $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), array('class' => 'thead-light'));
-
-echo $this->Html->tag('table', $header . $body);
 
 echo $this->Html->link(__('Cadastrar Leitura'), ['controller' => 'leituras', 'action' => 'add']);
 echo '<br>';
@@ -38,4 +35,5 @@ echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pa
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
 echo '<br>';
+echo $this->Html->tag('table', $header . $body, ['class' => 'table']);
 
