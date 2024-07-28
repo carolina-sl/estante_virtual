@@ -24,12 +24,12 @@ $detalhar = array();
     }
 
 $body = $this->Html->tableCells($detalhar);
-echo $this->Html->tag('table', $header . $body);
+$header = $this->Html->tag('thead', $this->Html->tag('thead', $this->Html->tableHeaders($colunas)));
 echo $this->Html->link(__('Cadastrar Leitura'), ['controller' => 'users', 'action' => 'cadastrar_leitura']);
 echo '<br>';
 echo $this->Html->link(__('Voltar'), ['action' => 'index']);
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
-
+echo $this->Html->tag('table', $header . $body, ['class' => 'table']);
 //echo $this->Html->css('forms');
 
