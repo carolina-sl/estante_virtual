@@ -22,46 +22,29 @@ echo '<br>';
 // livros
 echo $this->Html->image("pilha-de-livros.png", array(
     "alt" => "",
+    "title" => 'Livros',
     'url' => array('controller' => 'livros', 'action' => 'index')
 ));
 
 // users
 echo $this->Html->image("lista_usuario.png", array(
     "alt" => "",
+    "title" => 'Usuários',
     'url' => array('controller' => 'users', 'action' => 'index')
 ));
 echo '<br>';
+
 // relatorio de leituras
 echo $this->Html->image("relatorios.png", array(
     "alt" => "",
+    "title" => 'Relatórios',
     'url' => array('controller' => 'relatorios', 'action' => 'relatorio_leituras')
 ));
 
-// enderecos
-/*echo $this->Html->image("enderecos.png", array(
-    "alt" => "",
-    'url' => array('controller' => 'enderecos', 'action' => 'index'),
-    //'format' => '<div class="highlight">\1</div>'
-));
-echo '<br>';*/
 // leituras
 echo $this->Html->image("user_leitura.png", array(
     "alt" => "",
-    'url' => array('controller' => 'leituras', 'action' => 'index'),
-    //'format' => '<div class="highlight">\1</div>'
+    "title" => 'Leituras',
+    'url' => array('controller' => 'leituras', 'action' => 'index')
 ));
 echo '<br>';
-
-
-/*echo $this->Html->style(array(
-    'background' => '#FF1493',
-    'border-bottom' => '1px solid #000',
-    'padding' => '10px'
-));*/
-
-
-
-
-
-
-

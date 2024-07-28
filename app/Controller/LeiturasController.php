@@ -5,12 +5,12 @@ App::uses('AppController', 'Controller');
 class LeiturasController extends AppController {
 
     public function index() {
-        
+
         $this->loadModel('User');
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
         $this->loadModel('Leitura');
-        
+
         $dados = $this->Leitura->find('all', [
             'fields' => [
                 'Leitura.id',
@@ -19,15 +19,14 @@ class LeiturasController extends AppController {
                 'Livro.id',
                 'Livro.titulo',
                 'SituacaoLeitura.status'
-                
             ],
             'order' => [
                 'Leitura.id' => 'asc'
             ]
         ]);
-        
+
         if (!empty($this->request->data && $this->request->is('post', 'put'))) {
-            
+
             $dados = $this->Leitura->find('all', [
                 'conditions' => [
                     'User.nome' => $this->request->data['User']['nome']
@@ -35,16 +34,15 @@ class LeiturasController extends AppController {
                 'group' => 'User.id'
             ]);
         }
-        
+
         $this->set('dados', $dados);
     }
-    
+
     public function add() {
-        
         $this->loadModel('User');
         $this->loadModel('Livro');
         $this->loadModel('SituacaoLeitura');
-        
+
         $users = $this->User->find('list', [
             'fields' => [
                 'User.id',
@@ -58,24 +56,22 @@ class LeiturasController extends AppController {
                 'Livro.titulo'
             ]
         ]);
-        
+
         $situacaoLeituras = $this->SituacaoLeitura->find('list', [
             'fields' => [
                 'SituacaoLeitura.id',
                 'SituacaoLeitura.status'
             ]
         ]);
-
-        //$this->set(compact('leiturasUsers', 'leiturasLivros', 'leiturasSituacaoLeituras'));
         
+        $userLogado = Hash::get($this->Session->read(), 'Auth.User.id');
+        if ($this->request->is('get')) {
+            $this->request->data['Leitura']['user_id'] = $userLogado;
+        }
         $this->set('users', $users);
         $this->set('livros', $livros);
         $this->set('situacaoLeituras', $situacaoLeituras);
-        
-//        $this->set('leiturasUsers', $leiturasUsers);
-//        $this->set('leiturasLivros', $leiturasLivros);
-//        $this->set('leiturasSituacaoLeituras', $leiturasSituacaoLeituras);
-        
+
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->Leitura->create();
             if ($this->Leitura->save($this->request->data)) {
@@ -83,7 +79,18 @@ class LeiturasController extends AppController {
                 return $this->redirect(['action' => 'index']);
             }
         }
-        
+    }
+    
+    public function edit($id = null) {
+
+        if ($this->request->is(array('put', 'post'))) {
+            if ($this->Leitura->save($this->request->data)) {
+                $this->Flash->success(__('Leitura editada com sucesso'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Flash->success(__('Leitura não pode modificado'));
+        }
+        $this->request->data = $this->Leitura->findById($id);
     }
 
     public function view($id = null) {
@@ -93,7 +100,7 @@ class LeiturasController extends AppController {
     }
     
     public function leitura_situacao_livros_lidos_relatorio() {
-        
+
         $dados = $this->Leitura->find('all', [
             'fields' => [
                 'Leitura.id',
@@ -102,7 +109,28 @@ class LeiturasController extends AppController {
                 'Livro.id',
                 'Livro.titulo',
                 'SituacaoLeitura.status'
-                
+            ],
+            'conditions' => [
+                'Leitura.situacao_leitura_id' => 1
+            ],
+            'order' => [
+                'Leitura.id' => 'asc'
+            ]
+        ]);
+
+        $this->set('dados', $dados);
+    }
+
+    public function leitura_situacao_livros_lendo_relatorio() {
+
+        $dados = $this->Leitura->find('all', [
+            'fields' => [
+                'Leitura.id',
+                'User.id',
+                'User.nome',
+                'Livro.id',
+                'Livro.titulo',
+                'SituacaoLeitura.status'
             ],
             'conditions' => [
                 'Leitura.situacao_leitura_id' => 2
@@ -111,12 +139,12 @@ class LeiturasController extends AppController {
                 'Leitura.id' => 'asc'
             ]
         ]);
-        
+
         $this->set('dados', $dados);
     }
-    
-    public function leitura_situacao_livros_lendo_relatorio() {
-        
+
+    public function leitura_situacao_livros_quero_ler_relatorio() {
+
         $dados = $this->Leitura->find('all', [
             'fields' => [
                 'Leitura.id',
@@ -125,7 +153,6 @@ class LeiturasController extends AppController {
                 'Livro.id',
                 'Livro.titulo',
                 'SituacaoLeitura.status'
-                
             ],
             'conditions' => [
                 'Leitura.situacao_leitura_id' => 3
@@ -134,31 +161,8 @@ class LeiturasController extends AppController {
                 'Leitura.id' => 'asc'
             ]
         ]);
-        
+
         $this->set('dados', $dados);
     }
-    
-    public function leitura_situacao_livros_quero_ler_relatorio() {
-        
-        $dados = $this->Leitura->find('all', [
-            'fields' => [
-                'Leitura.id',
-                'User.id',
-                'User.nome',
-                'Livro.id',
-                'Livro.titulo',
-                'SituacaoLeitura.status'
-                
-            ],
-            'conditions' => [
-                'Leitura.situacao_leitura_id' => 4
-            ],
-            'order' => [
-                'Leitura.id' => 'asc'
-            ]
-        ]);
-        
-        $this->set('dados', $dados);
-    }
-   
+
 }

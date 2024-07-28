@@ -7,7 +7,7 @@ echo $this->Html->tag('h1', $this->Html->image("detalhe_livro.png", array(
 
 echo $this->Html->tag('h1', 'Detalhes do Livro');
     
-$colunas = array('id', 'Titulo', 'Descrição', 'Autor', 'Quantidade de Páginas');
+$colunas = array('id', 'Titulo', 'Descrição', 'Autor', 'Status', 'Quantidade de Páginas');
 $header = $this->Html->tableHeaders($colunas);
 
     $detalhar = array();

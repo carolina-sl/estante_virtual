@@ -32,7 +32,8 @@ App::uses('Controller', 'Controller');
  */
 
 class AppController extends Controller {
-
+    
+    public $layout = 'bootstrap';
     public $components = array(
         'DebugKit.Toolbar',
         'Session',
@@ -59,7 +60,7 @@ class AppController extends Controller {
 
     
     function beforeFilter() {
-        $this->Auth->allow('login');
+        $this->Auth->allow('login', 'add', 'index');
     }
     
     /*public function add(Model $model) {
