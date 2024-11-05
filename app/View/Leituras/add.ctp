@@ -5,6 +5,7 @@ echo $this->Form->create('Leitura');
 echo $this->Form->input('user_id', array('type'=>'hidden'));
 echo $this->Form->input('livro_id', ['required' => false, 'empty' => 'preencha']);
 echo $this->Form->input('situacao_leitura_id', ['required' => false, 'empty' => 'preencha']);
+echo $this->Form->input('resenha', ['required' => false, 'empty' => 'preencha', 'rows' => 4]);
 echo $this->Form->submit('Cadastrar');
 echo $this->Form->end();
 

@@ -12,7 +12,7 @@ $filtro .=  $this->Form->input('Livro.titulo', [
 ]);
 $filtro .=  $this->Form->button('Pesquisar', ['type' => 'submit', 'class' => 'btn btn-info']);
 
-$colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS', 'EDITAR'];
+$colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS', 'EDITAR', 'CANCELAR'];
 $livros = [];
 $totalQtdPaginas = [];
 foreach ($dados as $dado) {
@@ -25,6 +25,10 @@ foreach ($dados as $dado) {
         $this->Html->image("botao-editar.png", array(
         "alt" => "",
         'url' => array('controller' => 'livros', 'action' => 'edit', $dado['Livro']['id'])
+        )),
+        $this->Html->image("botao-cancelar.png", array(
+        "alt" => "",
+        'url' => array('controller' => 'livros', 'action' => 'delete', $dado['Livro']['id'])
         ))
     ];
     $totalQtdPaginas [] = $dado['Livro']['qtd_pagina'];

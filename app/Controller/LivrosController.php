@@ -13,8 +13,7 @@ class LivrosController extends AppController {
             $dados = $this->Livro->find('all', [
                 'conditions' => [
                     'Livro.titulo' => $this->request->data['Livro']['titulo']
-                ],
-                    //'group' => 'Livro.id'
+                ]
             ]);
         }
         
@@ -43,6 +42,16 @@ class LivrosController extends AppController {
             $this->Flash->success(__('Livro não pode modificado'));
         }
         $this->request->data = $this->Livro->findById($id);
+    }
+    
+    public function delete($id = null) {
+        
+        if (!$this->request->is('post')) {
+
+            $this->Leitura->delete($id);
+            $this->Flash->success('Livro com id: ' . $id . ' foi deletado.');
+            $this->redirect(array('action' => 'index'));
+        }
     }
 
     public function view($id = null) {

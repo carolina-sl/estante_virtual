@@ -17,4 +17,3 @@
     
     echo $this->Html->css('forms');
     
-//    debug($dado);

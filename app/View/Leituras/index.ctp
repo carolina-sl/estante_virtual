@@ -22,10 +22,10 @@ echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pa
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
 
-$colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA', 'EDITAR'];
+$colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA', 'EDITAR', 'CANCELAR'];
  
  $leituras = [];
- foreach ($dados as $dado) {
+foreach ($dados as $dado) {
      $leituras [] = [
         $dado['Leitura']['id'],
         $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
@@ -34,9 +34,13 @@ $colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA', 'EDITAR'];
         $this->Html->image("botao-editar.png", array(
         "alt" => "",
         'url' => array('controller' => 'leituras', 'action' => 'edit', $dado['Leitura']['id'])
+        )),
+        $this->Html->image("botao-cancelar.png", array(
+        "alt" => "",
+        'url' => array('controller' => 'leituras', 'action' => 'delete', $dado['Leitura']['id'])
         ))
      ];
- }
+}
 
 $body = $this->Html->tableCells($leituras);
 $header = $this->Html->tag('thead', $this->Html->tableHeaders($colunas), array('class' => 'thead-light'));

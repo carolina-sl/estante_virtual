@@ -92,6 +92,16 @@ class LeiturasController extends AppController {
         }
         $this->request->data = $this->Leitura->findById($id);
     }
+    
+    public function delete($id = null) {
+        
+        if (!$this->request->is('post')) {
+
+            $this->Leitura->delete($id);
+            $this->Flash->success('Leitura com id: ' . $id . ' foi deletada.');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
 
     public function view($id = null) {
         $dado = $this->Leitura->findById($id);

@@ -12,7 +12,7 @@ $filtro .=  $this->Form->input('User.nome', [
 $filtro .=  $this->Form->button('Pesquisar', ['type' => 'submit', 'class' => 'btn btn-info']);
 //$filtro .=  $this->Form->end('Pesquisar');
 
-$colunas = ['ID', 'NOME','USERNAME', 'EMAIL',  'EDITAR'];
+$colunas = ['ID', 'NOME','USERNAME', 'EMAIL',  'EDITAR', 'CANCELAR'];
 $users = [];
 foreach ($dados as $dado) {
      $users[] = [
@@ -23,6 +23,10 @@ foreach ($dados as $dado) {
         $this->Html->image("botao-editar.png", array(
         "alt" => "",
         'url' => array('controller' => 'users', 'action' => 'edit', $dado['User']['id'])
+        )),
+         $this->Html->image("botao-cancelar.png", array(
+        "alt" => "",
+        'url' => array('controller' => 'users', 'action' => 'delete', $dado['User']['id'])
         ))
      ];
  }
