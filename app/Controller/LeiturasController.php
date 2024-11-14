@@ -18,6 +18,7 @@ class LeiturasController extends AppController {
                 'User.nome',
                 'Livro.id',
                 'Livro.titulo',
+                'Leitura.resenha',
                 'SituacaoLeitura.status'
             ],
             'order' => [
@@ -34,7 +35,7 @@ class LeiturasController extends AppController {
                 'group' => 'User.id'
             ]);
         }
-
+        
         $this->set('dados', $dados);
     }
 
@@ -68,6 +69,7 @@ class LeiturasController extends AppController {
         if ($this->request->is('get')) {
             $this->request->data['Leitura']['user_id'] = $userLogado;
         }
+        
         $this->set('users', $users);
         $this->set('livros', $livros);
         $this->set('situacaoLeituras', $situacaoLeituras);
@@ -82,7 +84,24 @@ class LeiturasController extends AppController {
     }
     
     public function edit($id = null) {
-
+        
+        $this->loadModel('Livro');
+        $this->loadModel('SituacaoLeitura');
+        
+        $livros = $this->Livro->find('list', [
+            'fields' => [
+                'Livro.id',
+                'Livro.titulo'
+            ]
+        ]);
+        
+        $situacaoLeituras = $this->SituacaoLeitura->find('list', [
+            'fields' => [
+                'SituacaoLeitura.id',
+                'SituacaoLeitura.status'
+            ]
+        ]);
+        
         if ($this->request->is(array('put', 'post'))) {
             if ($this->Leitura->save($this->request->data)) {
                 $this->Flash->success(__('Leitura editada com sucesso'));
@@ -91,6 +110,9 @@ class LeiturasController extends AppController {
             $this->Flash->success(__('Leitura não pode modificado'));
         }
         $this->request->data = $this->Leitura->findById($id);
+        
+        $this->set('livros', $livros);
+        $this->set('situacaoLeituras', $situacaoLeituras);
     }
     
     public function delete($id = null) {

@@ -22,15 +22,16 @@ echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pa
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['controller' => 'users', 'action' => 'logout']);
 
-$colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA', 'EDITAR', 'CANCELAR'];
- 
- $leituras = [];
+$colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA', 'RESENHA', 'EDITAR', 'CANCELAR'];
+
+$leituras = [];
 foreach ($dados as $dado) {
-     $leituras [] = [
+    $leituras [] = [
         $dado['Leitura']['id'],
         $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
         $dado['Livro']['titulo'],
         $dado['SituacaoLeitura']['status'],
+        !empty($dado['Leitura']['resenha']) ? '<b>SIM</b>' : 'NÃO', 
         $this->Html->image("botao-editar.png", array(
         "alt" => "",
         'url' => array('controller' => 'leituras', 'action' => 'edit', $dado['Leitura']['id'])

@@ -61,7 +61,7 @@ class UsersController extends AppController {
 
     public function edit($id = null) {
         $this->loadModel('Endereco');
-
+        
         $usersEnderecos = $this->Endereco->find('list', [
             'fields' => [
                 'Endereco.id',
