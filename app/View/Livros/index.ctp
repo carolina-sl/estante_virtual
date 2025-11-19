@@ -12,7 +12,7 @@ $filtro .=  $this->Form->input('Livro.titulo', [
 ]);
 $filtro .=  $this->Form->button('Pesquisar', ['type' => 'submit', 'class' => 'btn btn-info']);
 
-$colunas = ['ID', 'TITULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS', 'EDITAR'];
+$colunas = ['ID', 'TÍTULO','DESCRICAO', 'AUTOR', 'QUANTIDADE DE PÁGINAS', 'EDITAR'];
 $livros = [];
 $totalQtdPaginas = [];
 foreach ($dados as $dado) {

@@ -44,10 +44,9 @@ class User extends AppModel {
         'Leitura' => [
             'className' => 'Leitura'
         ],
-        'Endereco' => [
+    /*    'Endereco' => [
             'className' => 'Endereco',
-            
-        ]
+        ]*/
     ];
 
     public $virtualFields = array(

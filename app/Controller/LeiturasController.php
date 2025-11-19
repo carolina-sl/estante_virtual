@@ -18,7 +18,8 @@ class LeiturasController extends AppController {
                 'User.nome',
                 'Livro.id',
                 'Livro.titulo',
-                'SituacaoLeitura.status'
+                'SituacaoLeitura.status',
+                'SituacaoLeitura.situacao'
             ],
             'order' => [
                 'Leitura.id' => 'asc'
@@ -60,7 +61,7 @@ class LeiturasController extends AppController {
         $situacaoLeituras = $this->SituacaoLeitura->find('list', [
             'fields' => [
                 'SituacaoLeitura.id',
-                'SituacaoLeitura.status'
+                'SituacaoLeitura.situacao'
             ]
         ]);
         
@@ -71,7 +72,7 @@ class LeiturasController extends AppController {
         $this->set('users', $users);
         $this->set('livros', $livros);
         $this->set('situacaoLeituras', $situacaoLeituras);
-
+        
         if ($this->request->is('post') && !empty($this->request->data)) {
             $this->Leitura->create();
             if ($this->Leitura->save($this->request->data)) {

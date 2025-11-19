@@ -13,3 +13,10 @@ echo $this->Form->end();
 echo $this->Html->link(__('Início'), ['controller' => 'inicio', 'action' => 'pagina_inicial']);
 echo '<br>';
 echo $this->Html->link(__('Sair'), ['action' => 'logout']);
+
+logradouro
+bairro
+numero
+complemento
+cidade
+uf

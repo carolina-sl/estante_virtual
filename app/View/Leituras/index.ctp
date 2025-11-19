@@ -30,7 +30,7 @@ $colunas = ['ID', 'USUÁRIO', 'LIVRO', 'SITUAÇÃO DA LEITURA', 'EDITAR'];
         $dado['Leitura']['id'],
         $this->Html->link($dado['User']['nome'], array('controller' => 'users', 'action' => 'view', $dado['User']['id'])),
         $dado['Livro']['titulo'],
-        $dado['SituacaoLeitura']['status'],
+        $dado['SituacaoLeitura']['situacao'],
         $this->Html->image("botao-editar.png", array(
         "alt" => "",
         'url' => array('controller' => 'leituras', 'action' => 'edit', $dado['Leitura']['id'])
